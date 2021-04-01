@@ -1,0 +1,34 @@
+{
+    "questionid":{
+        "type": "number",
+        "required": true
+    },
+    "question":{
+        "type": "String",
+        "required": true
+    },
+    "answer":{
+        "type": "String",
+        "required": true
+    },
+    "stream":{
+        "type": "String",
+        "required": true
+    },
+    "subject":{
+        "type": "String",
+        "required": true
+    },
+    "keywords":{
+        "type": "array",
+        "required": true
+    },
+    "difficulty":{
+        "type": "number",
+        "required": true
+    },
+    "relevance":{
+        "type": "number",
+        "required": true
+    }
+}

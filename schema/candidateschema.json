@@ -1,0 +1,30 @@
+{
+    "name":{
+        "type": "String",
+        "required": true
+    },
+    "stream":{
+        "type": "String",
+        "required": true
+    },
+    "associateid":{
+        "type": "number",
+        "required": true
+    },
+    "institute":{
+        "type": "String",
+        "required": true
+    },
+    "points":{
+        "type": "number",
+        "required": true
+    },
+    "remarks":{
+        "type": "String",
+        "required": true
+    },
+    "selectionstatus":{
+        "type": "String",
+        "required": true
+    }
+}
