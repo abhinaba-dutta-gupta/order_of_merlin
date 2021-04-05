@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-.connect('mongodb://127.0.0.1:27017/qustionnaire', {useNewUrlParser:true}, { useUnifiedTopology: true })
+.connect('mongodb://127.0.0.1:27017/Questionnaire', {useNewUrlParser:true}, { useUnifiedTopology: true })
 .catch(e =>{
     console.log('Connection Error', e.message)
 })
@@ -23,5 +23,7 @@ db.once('open', ()=>{
 
 db.on('error', console.error.bind(console, 'MongoDB connection error'))
 
+var users = require('../routes/signup');
+app.use('/users', users);
 
 app.listen(port, () => console.log(`Listening on port ${port}.`));
