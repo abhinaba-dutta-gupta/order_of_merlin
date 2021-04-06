@@ -24,6 +24,7 @@ db.once('open', ()=>{
 db.on('error', console.error.bind(console, 'MongoDB connection error'))
 
 var users = require('../routes/signup');
+var users = require('../routes/login');
 app.use('/users', users);
 
 app.listen(port, () => console.log(`Listening on port ${port}.`));
