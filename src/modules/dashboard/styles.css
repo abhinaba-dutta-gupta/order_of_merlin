@@ -5,12 +5,6 @@
     position: relative;
 }
 
-.head{
-    height: 9%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-variant: small-caps;
-}
-
 h1,h2,h3{
     margin: auto;
     font-family: Arial, Helvetica, sans-serif;
@@ -22,15 +16,6 @@ h1,h2,h3{
     color: #008099;
     font-family: Arial, Helvetica, sans-serif;
     font-variant: small-caps;
-}
-
-.logo {
-    height: 50px;
-    width: 45px;
-    z-index: 1000;
-    margin-top: 0.8%;
-    margin-left: 38.5%;
-    position: absolute;
 }
 
 .arrow {
@@ -69,8 +54,8 @@ button:hover {
     background: #002233;
     color: white;
     position: fixed;
-    top: 9%;
-    right: 0;
+    top: 8.5%;
+    right: 0%;
     width: 22%;
     z-index: 200;
     box-shadow: 1px 0px 7px rgba(0,0,0,0.5); 
@@ -87,11 +72,11 @@ button:hover {
     background: #002233;
     color: white;
     position: fixed;
-    top: 9%;
+    top: 8.5%;
     right: 0;
     width: 8%;
     z-index: 2000;
-    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5); 
+    box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.5); 
     transform: translateX(100%);
     transition: transform;
   }

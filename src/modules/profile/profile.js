@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import '../profile/styles.css';
 import background from '../../images/background.jpg';
-import { AppBar, Toolbar, Tab, Tabs, IconButton } from '@material-ui/core';
+import { Tab, Tabs, IconButton } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import Modal from '../../components/modal/modal';
-import logo from '../../images/logo.png';
 import Table from 'react-bootstrap/Table';
 import { withRouter } from "react-router-dom";
+import AppbarLogin from '../../components/appbarLogin/appbarLogin';
 
 
 class Profile extends Component {
@@ -19,23 +19,23 @@ class Profile extends Component {
             panelOpen: false
         }
     }
+
     showModal = e => {
         this.setState({
             show: !this.state.show
         });
-    };
+    }
+
     redirectToDashboard = () => {
         const { history } = this.props;
         if (history) history.push('/dashboard');
     }
+
     redirectToProfile = () => {
         const { history } = this.props;
         if (history) history.push('/profile');
     }
-    redirectToSignin = () => {
-        const { history } = this.props;
-        if (history) history.push('/');
-    }
+    
     confirm = () => {
         alert("Profile Updated Successfully!");
     }
@@ -45,6 +45,7 @@ class Profile extends Component {
             panelOpen: !this.state.panelOpen
         })
     }
+
     closePanel = () => {
         this.setState({
             panelOpen: false
@@ -52,30 +53,24 @@ class Profile extends Component {
     }
 
     render() {
+
         let panelClasses = 'side-panel'
         if (this.state.panelOpen) {
             panelClasses = 'side-panel open'
         }
+        
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
-                <AppBar className='head' position="static" style={{ background: '#008099' }}>
-                    <Toolbar>
-                        <img
-                            className='logo'
-                            src={logo}
-                            alt="Logo"
-                        />
-                        <h1 style={{ marginLeft: '44%', position: 'relative' }} onClick={this.redirectToSignin}>Questionnaire</h1>
-                        <Tabs
-                            indicatorColor="primary"
-                            textColor="white"
-                            aria-label="disabled tabs example">
-                            <Tab label="Dashboard" onClick={this.redirectToDashboard} />
-                            <Tab label="Profile" onClick={this.redirectToProfile} />
-                        </Tabs>
-                        <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
-                    </Toolbar>
-                </AppBar>
+                <AppbarLogin>
+                    <Tabs
+                        indicatorColor="primary"
+                        textColor="white"
+                        aria-label="disabled tabs example">
+                        <Tab label="Dashboard" onClick={this.redirectToDashboard} />
+                        <Tab label="Profile" onClick={this.redirectToProfile} />
+                    </Tabs>
+                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
+                </AppbarLogin>
 
                 <br></br>
                 <h1 className='title' >Profile</h1>

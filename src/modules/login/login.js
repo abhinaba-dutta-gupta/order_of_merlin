@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import '../login/styles.css';
 import background from '../../images/background.jpg';
-import { AppBar, TextField, IconButton } from '@material-ui/core';
+import { TextField, IconButton } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.png';
 import { Email, Lock } from '@material-ui/icons';
 import { withRouter } from 'react-router-dom';
+import Appbar from '../../components/appbar/appbar';
 
 
 class Signin extends Component {
@@ -17,14 +17,7 @@ class Signin extends Component {
     render() {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
-                <AppBar className='head' position="static" style={{ background: '#008099' }}>
-                    <img
-                        className='logo'
-                        src={logo}
-                        alt="Logo"
-                    />
-                    <h1>Questionnaire</h1>
-                </AppBar>
+                <Appbar></Appbar>
                 <div className='paper-small'>
                     <div className="card-head"><h1 className='card-title'><IconButton><Lock style={{ color: 'white' }} /></IconButton>Login here</h1></div>
                     <br></br>

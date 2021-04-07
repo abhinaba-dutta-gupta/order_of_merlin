@@ -9,6 +9,8 @@ import Candidate from './modules/candidate/candidate';
 import Subject from './modules/subject/subject';
 import Question from './modules/question/question';
 import Profile from './modules/profile/profile';
+import Appbar from './components/appbar/appbar';
+import AppbarLogin from './components/appbarLogin/appbarLogin';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/subject" exact component={Subject} />
         <Route path="/question" exact component={Question} />
         <Route path="/profile" exact component={Profile} />
+        <Route path="/appbar" exact component={Appbar} />
+        <Route path="/appbarLogin" exact component={AppbarLogin} />
       </Router>
     </div>
   );

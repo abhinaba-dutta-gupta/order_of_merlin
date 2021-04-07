@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import '../candidate/styles.css';
 import background from '../../images/background.jpg';
-import logo from '../../images/logo.png';
-import { AppBar, IconButton, Toolbar, Tabs, Tab } from '@material-ui/core';
+import { IconButton, Tabs, Tab } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import { Rating, Pagination } from '@material-ui/lab';
 import { TableContainer, Table } from 'react-custom-table';
 import { Scrollbars } from 'rc-scrollbars';
 import { withRouter } from "react-router-dom";
+import AppbarLogin from '../../components/appbarLogin/appbarLogin';
 
 
 class Candidate extends Component {
@@ -20,26 +20,32 @@ class Candidate extends Component {
             panelOpen: false
         }
     }
+    
     simpleRating = () => {
         this.setState({ value: 2, setValue: 2 });
-    };
-    redirectToDashboard = () => {
-        const { history } = this.props;
-        if (history) history.push('/dashboard');
     }
-    redirectToProfile = () => {
-        const { history } = this.props;
-        if (history) history.push('/profile');
-    }
+
     redirectToSignin = () => {
         const { history } = this.props;
         if (history) history.push('/');
     }
+
+    redirectToDashboard = () => {
+        const { history } = this.props;
+        if (history) history.push('/dashboard');
+    }
+
+    redirectToProfile = () => {
+        const { history } = this.props;
+        if (history) history.push('/profile');
+    }
+
     openPanel = () => {
         this.setState({
             panelOpen: !this.state.panelOpen
         })
     }
+
     closePanel = () => {
         this.setState({
             panelOpen: false
@@ -48,30 +54,24 @@ class Candidate extends Component {
 
 
     render() {
+
         let panelClasses = 'side-panel';
         if (this.state.panelOpen) {
             panelClasses = 'side-panel open';
         }
+
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
-                <AppBar position="static" className='head' style={{ background: '#008099' }}>
-                    <Toolbar>
-                        <img
-                            className='logo'
-                            src={logo}
-                            alt="Logo"
-                        />
-                        <h1 style={{ marginLeft: '44%', position: 'relative' }} onClick={this.redirectToSignin}>Questionnaire</h1>
-                        <Tabs
-                            indicatorColor="primary"
-                            textColor="white"
-                            aria-label="disabled tabs example">
-                            <Tab label="Dashboard" onClick={this.redirectToDashboard} />
-                            <Tab label="Profile" onClick={this.redirectToProfile} />
-                        </Tabs>
-                        <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
-                    </Toolbar>
-                </AppBar>
+                <AppbarLogin>
+                    <Tabs
+                        indicatorColor="primary"
+                        textColor="white"
+                        aria-label="disabled tabs example">
+                        <Tab label="Dashboard" onClick={this.redirectToDashboard} />
+                        <Tab label="Profile" onClick={this.redirectToProfile} />
+                    </Tabs>
+                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
+                </AppbarLogin>
 
                 <br></br>
                 <h1 className='title'>Candidate Statistics</h1>

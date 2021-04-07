@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import '../subject/styles.css';
 import background from '../../images/background.jpg';
-import logo from '../../images/logo.png';
 import electrical from '../../images/lightning.png';
 import code from '../../images/coding.png';
 import electronics from '../../images/cpu.png';
 import physics from '../../images/physics.png';
-import { AppBar, IconButton, Toolbar, Tabs, Tab, Grid, InputLabel, MenuItem, Select, FormControl } from '@material-ui/core';
+import { IconButton, Tabs, Tab, Grid, InputLabel, MenuItem, Select, FormControl } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import Modal from '../../components/modal/modal';
 import { TableContainer, Table } from 'react-custom-table';
 import { Scrollbars } from 'rc-scrollbars';
 import { withRouter } from "react-router-dom";
+import AppbarLogin from '../../components/appbarLogin/appbarLogin';
 
 
 class Subject extends Component {
@@ -23,43 +23,45 @@ class Subject extends Component {
             panelOpen: false
         }
     }
+    
     toggle = () => {
         this.setState({ showbutton: true });
-    };
+    }
 
     hideAll = () => {
         this.setState({ showbutton: false });
-    };
+    }
 
     state = {
         show: false
-    };
+    }
+
     showModal = e => {
         this.setState({
             show: !this.state.show
         });
-    };
+    }
 
     handleChange = (event) => {
         this.setState(event.target.value);
-    };
+    }
+
     redirectToDashboard = () => {
         const { history } = this.props;
         if (history) history.push('/dashboard');
     }
+
     redirectToProfile = () => {
         const { history } = this.props;
         if (history) history.push('/profile');
     }
-    redirectToSignin = () => {
-        const { history } = this.props;
-        if (history) history.push('/');
-    }
+
     openPanel = () => {
         this.setState({
             panelOpen: !this.state.panelOpen
         })
     }
+
     closePanel = () => {
         this.setState({
             panelOpen: false
@@ -67,30 +69,24 @@ class Subject extends Component {
     }
 
     render() {
-        let panelClasses = 'side-panel'
+
+        let panelClasses = 'side-panel';
         if (this.state.panelOpen) {
-            panelClasses = 'side-panel open'
+            panelClasses = 'side-panel open';
         }
+
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
-                <AppBar position="static" className='head' style={{ background: '#008099' }}>
-                    <Toolbar>
-                        <img
-                            className='logo'
-                            src={logo}
-                            alt="Logo"
-                        />
-                        <h1 style={{ marginLeft: '44%', position: 'relative' }} onClick={this.redirectToSignin}>Questionnaire</h1>
-                        <Tabs
-                            indicatorColor="primary"
-                            textColor="white"
-                            aria-label="disabled tabs example">
-                            <Tab label="Dashboard" onClick={this.redirectToDashboard} />
-                            <Tab label="Profile" onClick={this.redirectToProfile} />
-                        </Tabs>
-                        <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }}/></IconButton>
-                    </Toolbar>
-                </AppBar>
+                <AppbarLogin>
+                    <Tabs
+                        indicatorColor="primary"
+                        textColor="white"
+                        aria-label="disabled tabs example">
+                        <Tab label="Dashboard" onClick={this.redirectToDashboard} />
+                        <Tab label="Profile" onClick={this.redirectToProfile} />
+                    </Tabs>
+                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
+                </AppbarLogin>
 
                 <br></br>
                 <h1 className='title'>Common Subjects</h1>
