@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 users.use(cors());
 
 
-users.route('/login').post((req, res) => {
+users.route('/forgotPass').post((req, res) => {
 
     // var userData = {
     //     email : req.body.email,
@@ -19,7 +19,7 @@ users.route('/login').post((req, res) => {
         .then(user => {
             console.log(user);
             if (user) {
-                if (bcrypt.compareSync(req.body.password, user.password)) {
+                if (bcrypt.compareSync(req.body.personalQuestion, user.personalQuestion)) {
                     console.log(user);
                     res.status(200).json({ user: 'User exist' })
 

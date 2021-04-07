@@ -26,6 +26,10 @@ const userSchemaa = new Schema({
     interviewsno:{
         type: String,
         required: true
+    },
+    personalQuestion:{
+        type: String,
+        required: true
     }
 });
 
