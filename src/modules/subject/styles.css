@@ -44,10 +44,10 @@ h1,h2,h3{
 
 td, th {
     color: rgba(255, 255, 255, 1);
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 th {

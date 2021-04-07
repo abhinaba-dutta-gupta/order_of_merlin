@@ -92,12 +92,13 @@ class Subject extends Component {
                 <h1 className='title'>Common Subjects</h1>
                 <br></br>
                 <div className='table-div'>
-                    <Scrollbars style={{ width: '510px', height: '450px' }}>
+                    <Scrollbars style={{ width: '720px', height: '500px' }}>
                         <TableContainer
                             columns={[
                                 { id: "icon", title: "" },
                                 { id: "name", title: "Name" },
                                 { id: "questions", title: "No. of questions" },
+                                { id: "choose", title: "Choose one subject" }
                             ]}
                             rows={[
                                 { id: "1", icon: <img className='subIcon' src={electrical} alt="icon" />, name: "Basic Electrical", questions: "24" },
