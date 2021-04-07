@@ -7,24 +7,27 @@ const bcrypt = require('bcrypt');
 users.use(cors());
 
 
-users.route('/forgotPass').post((req, res) => {
-
-    // var userData = {
-    //     email : req.body.email,
-    //     password : req.body.password
-    // }
+ users.route('/forgotPass').post((req, res) => {
+    const userData = {
+        password: req.body.password
+    }
     userSchemaaa.findOne({
         email: req.body.email
     })
         .then(user => {
-            console.log(user);
             if (user) {
-                if (bcrypt.compareSync(req.body.personalQuestion, user.personalQuestion)) {
-                    console.log(user);
-                    res.status(200).json({ user: 'User exist' })
-
+                if ( user.personalQuestion === req.body.personalQuestion) {
+                    //res.status(200).json({ user: 'User exist' })
+                    if(req.body.password === req.body.confirmPassword){
+                        user.password = req.body.password;
+                        bcrypt.hash(user.password, 10, (err, hash) => {
+                            user.password = hash
+                            user.save();
+                            res.status(200).json({ user: 'User exists' })
+                        }) 
+                       
+                    }
                 }
-
             }
             else {
                 res.json({
