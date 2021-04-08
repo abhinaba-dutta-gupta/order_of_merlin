@@ -77,7 +77,7 @@ class ForgotPassword extends Component {
 
         if(!(fields["password"] === fields["confirmPassword"])) {
             formIsValid = false;
-            errors["password"] = "Passwords should be same";
+            errors["confirmPassword"] = "Passwords should be same";
         }
 
         this.setState({ errors: errors });
@@ -141,20 +141,25 @@ class ForgotPassword extends Component {
                 </div>
 
                 <Modal onClose={this.showModal} show={this.state.show}>
+                    
                     <h1 className='title' > Reset Password </h1>
                     <br></br>
+                    <form onSubmit= {this.contactPasswordSubmit.bind(this)}>
                     <div class="article-container">
                         <div class="article">
                             <p><IconButton><Lock style={{ color: 'grey' }} /></IconButton>
                                <TextField id="filled-basic" required='required' type='password' size='small' label="New Password" variant="standard" onChange={this.handleChange.bind(this, "password")} /></p>
+                               <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
                         </div>
                         <div class="article">
                             <p><IconButton><Lock style={{ color: 'grey' }} /></IconButton>
                                <TextField id="filled-basic" required='required' type='password' size='small' label="Confirm New Password" variant="standard" onChange={this.handleChange.bind(this, "confirmPassword")} /></p>
+                               <span style={{ color: "red" }}>{this.state.errors["confirmPassword"]}</span>
                         </div>
                     </div>
                     <br></br>
-                    <button type='submit' onSubmit={this.contactPasswordSubmit.bind(this)} >Submit</button>
+                    <button type='submit'>Submit</button>
+                    </form>
                 </Modal>
             </div>
         );
