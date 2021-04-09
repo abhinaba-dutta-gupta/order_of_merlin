@@ -27,18 +27,18 @@ class Signin extends Component {
         //Password Validation
         if (!fields["password"]) {
             formIsValid = false;
-            errors["password"] = "Cannot be empty";
+            errors["password"] = "! Password cannot be empty";
         }
 
         if (!(fields["password"].length>=4 && fields["password"].length<=8)) {
             formIsValid = false;
-            errors["password"] = "Password should be between 4-8 characters length";
+            errors["password"] = "! Password length must be 4-8 characters";
         }
 
         //Email Validation
         if (!fields["email"]) {
             formIsValid = false;
-            errors["email"] = "Cannot be empty";
+            errors["email"] = "! Email cannot be empty";
         }
 
         if (typeof fields["email"] !== "undefined") {
