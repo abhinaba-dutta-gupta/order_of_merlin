@@ -19,11 +19,19 @@ class Signup extends Component {
       phone: '',
       password: '',
       associateid: '',
-      personalQuestion: ''
+      personalQuestion: '',
     }
+    this.submitForm = this.submitForm.bind(this);
   }
 
   showModal = e => {
+    this.setState({
+      show: !this.state.show
+    });
+  }
+
+  submitForm = (event) => {
+    event.preventDefault();
     const userRegistration = {
       email: this.state.email,
       name: this.state.name,
@@ -34,12 +42,12 @@ class Signup extends Component {
       personalQuestion: this.state.personalQuestion
     }
     signup(userRegistration).then(res => {
-      this.setState({
-        show: !this.state.show
-      });
+      this.showModal(event);
+      console.log(res);
     })
-
   }
+
+
   changeHandler = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -58,30 +66,32 @@ class Signup extends Component {
         <Appbar></Appbar>
         <div className='paper-small'>
           <div className="card-head"><h1 className='card-title'><IconButton><AccountBox style={{ color: 'white' }} /></IconButton>Register here</h1></div>
-          <p>
-            <IconButton><Person style={{ color: 'grey' }} /></IconButton>
-            <TextField required='required' size='small' name="name" label="Associate Name" variant="standard" value={this.state.name} onChange={this.changeHandler} />
-          </p>
-          <p>
-            <IconButton><Email style={{ color: 'grey' }} /></IconButton>
-            <TextField required='required' type='e-mail' size='small' name="email" label="Email-ID" variant="standard" value={this.state.email} onChange={this.changeHandler} />
-          </p>
-          <p>
-            <IconButton><PhoneAndroid style={{ color: 'grey' }} /></IconButton>
-            <TextField type='number' size='small' name="phone" label="Phone number" variant="standard" value={this.state.phone} onChange={this.changeHandler} />
-          </p>
-          <p>
-            <IconButton><CardTravel style={{ color: 'grey' }} /></IconButton>
-            <TextField required='required' size='small' name="associateid" label="Associate ID" variant="standard" value={this.state.associateid} onChange={this.changeHandler} />
-          </p>
-          <p><IconButton><Lock style={{ color: 'grey' }} /></IconButton>
-            <TextField required='required' type='password' name="password" size='small' label="Password" variant="standard" value={this.state.password} onChange={this.changeHandler} />
-          </p>
-          <p>
-            <IconButton><Security style={{ color: 'grey' }} /></IconButton>
-            <TextField required='required' type='personal-question' size='small' name="personalQuestion" label="Mother's maiden name" variant="standard" value={this.state.personalQuestion} onChange={this.changeHandler} />
-          </p>
-          <button onClick={e => { this.showModal(e) }}>Submit</button>
+          <form onSubmit={ this.submitForm }>
+            <p>
+              <IconButton><Person style={{ color: 'grey' }} /></IconButton>
+              <TextField required='required' size='small' name="name" label="Associate Name" variant="standard" value={this.state.name} onChange={this.changeHandler} />
+            </p>
+            <p>
+              <IconButton><Email style={{ color: 'grey' }} /></IconButton>
+              <TextField required='required' type='e-mail' size='small' name="email" label="Email-ID" variant="standard" value={this.state.email} onChange={this.changeHandler} />
+            </p>
+            <p>
+              <IconButton><PhoneAndroid style={{ color: 'grey' }} /></IconButton>
+              <TextField type='number' size='small' name="phone" label="Phone number" variant="standard" value={this.state.phone} onChange={this.changeHandler} />
+            </p>
+            <p>
+              <IconButton><CardTravel style={{ color: 'grey' }} /></IconButton>
+              <TextField required='required' size='small' name="associateid" label="Associate ID" variant="standard" value={this.state.associateid} onChange={this.changeHandler} />
+            </p>
+            <p><IconButton><Lock style={{ color: 'grey' }} /></IconButton>
+              <TextField required='required' type='password' name="password" size='small' label="Password" variant="standard" value={this.state.password} onChange={this.changeHandler} />
+            </p>
+            <p>
+              <IconButton><Security style={{ color: 'grey' }} /></IconButton>
+              <TextField required='required' type='personal-question' size='small' name="personalQuestion" label="Mother's maiden name" variant="standard" value={this.state.personalQuestion} onChange={this.changeHandler} />
+            </p>
+            <button type="submit">Submit</button>
+          </form>
         </div>
         <Modal onClose={this.showModal} show={this.state.show}>
           <p>Your account has been created Successfully! A confirmation mail has been sent to your registered e-mail.</p>

@@ -12,7 +12,7 @@ export const signup = newUser => {
             personalQuestion: newUser.personalQuestion
         })
         .then(res =>{
-            res.json();
+            console.log(res);
         })
     .catch(error =>{
         console.log(error)
