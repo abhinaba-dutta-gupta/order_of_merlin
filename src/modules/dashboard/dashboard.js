@@ -8,7 +8,7 @@ import Modal from '../../components/modal/modal';
 import { Link, withRouter } from 'react-router-dom';
 import { Person, Domain, CallSplit, Keyboard, Menu, AccountCircle } from '@material-ui/icons';
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
-
+import { associate } from '../../api/auth';
 
 
 class Dashboard extends Component {
@@ -21,7 +21,8 @@ class Dashboard extends Component {
             show: false,
             show1: false,
             drawerOpen: false,
-            panelOpen: false
+            panelOpen: false,
+            email: ''
         }
     }
 
@@ -60,6 +61,11 @@ class Dashboard extends Component {
         if (history) history.push('/subject');
     }
 
+    redirectToSignin = () => {
+        localStorage.removeItem('userData');
+        window.location = '/login';
+    }
+
     openDrawer = () => {
         this.setState({
             drawerOpen: !this.state.drawerOpen
@@ -85,6 +91,21 @@ class Dashboard extends Component {
     closePanel = () => {
         this.setState({
             panelOpen: false
+        })
+    }
+
+    componentDidMount = () => {
+        const user = JSON.parse(localStorage.getItem('userData'));
+        console.log(user);
+        this.setState({
+            email: this.state.email
+        })
+        // window.onpopstate = function () {
+        //     alert("Back/Forward clicked!");
+        // }
+        associate(user.email)
+        .then (res => {
+            console.log(res);
         })
     }
 
@@ -115,7 +136,7 @@ class Dashboard extends Component {
                 </AppbarLogin>
                 <br></br>
                 <br></br>
-                <h1 className='title'>Welcome, Panchugopal</h1>
+                <h1 className='title'>Welcome, {this.state.email}</h1>
                 <br></br>
                 <br></br>
                 <Grid container className='grid' spacing={12} justify='center' alignItems='center'>

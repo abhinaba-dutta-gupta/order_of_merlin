@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Email, Lock } from '@material-ui/icons';
 import { withRouter } from 'react-router-dom';
 import Appbar from '../../components/appbar/appbar';
+import { login } from '../../api/auth';
 
 
 class Signin extends Component {
@@ -30,7 +31,7 @@ class Signin extends Component {
             errors["password"] = "! Password cannot be empty";
         }
 
-        if (!(fields["password"].length>=4 && fields["password"].length<=8)) {
+        if (!(fields["password"].length >= 4 && fields["password"].length <= 8)) {
             formIsValid = false;
             errors["password"] = "! Password length must be 4-8 characters";
         }
@@ -57,12 +58,20 @@ class Signin extends Component {
 
     contactSubmit(e) {
         e.preventDefault();
+        let fields = this.state.fields;
 
         if (this.handleValidation()) {
-            this.redirectToDashboard();
+            const userLogin = {
+                email: fields["email"],
+                password: fields["password"],
+            }
+            login(userLogin).then(res => {
+                console.log(res);
+                this.redirectToDashboard();
+            });
         }
-
     }
+
 
     handleChange(field, e) {
         let fields = this.state.fields;

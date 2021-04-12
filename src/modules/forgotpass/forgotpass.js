@@ -7,6 +7,7 @@ import Modal from '../../components/modal/modal';
 import { Mail, LockOpen, Security, Lock } from '@material-ui/icons';
 import { withRouter } from 'react-router-dom';
 import Appbar from '../../components/appbar/appbar';
+import { forgetPassword } from '../../api/auth';
 
 
 class ForgotPassword extends Component {
@@ -75,7 +76,7 @@ class ForgotPassword extends Component {
             errors["password"] = "Password should be between 4-8 characters length";
         }
 
-        if(!(fields["password"] === fields["confirmPassword"])) {
+        if (!(fields["password"] === fields["confirmPassword"])) {
             formIsValid = false;
             errors["confirmPassword"] = "Passwords should be same";
         }
@@ -89,15 +90,25 @@ class ForgotPassword extends Component {
 
         if (this.handleValidation()) {
             this.showModal();
-        } 
+        }
     }
 
     contactPasswordSubmit(e) {
         e.preventDefault();
+        let fields = this.state.fields;
 
-        if (this.handlePasswordValidation()) {
-            this.redirectToSignin();
-        } 
+        if (this.handleValidation()) {
+            const userLogin = {
+                email: fields["email"],
+                personalQuestion: fields["personalQuestion"],
+                password: fields["password"],
+                confirmPassword: fields["confirmPassword"]
+            }
+            forgetPassword(userLogin).then(res => {
+                this.redirectToSignin();
+                console.log(res);
+            });
+        }
     }
 
     handleChange(field, e) {
@@ -114,7 +125,7 @@ class ForgotPassword extends Component {
 
     redirectToSignin = () => {
         const { history } = this.props;
-        if (history) history.push('/');
+        if (history) history.push('/login');
     }
 
     render() {
@@ -141,24 +152,24 @@ class ForgotPassword extends Component {
                 </div>
 
                 <Modal onClose={this.showModal} show={this.state.show}>
-                    
+
                     <h1 className='title' > Reset Password </h1>
                     <br></br>
-                    <form onSubmit= {this.contactPasswordSubmit.bind(this)}>
-                    <div class="article-container">
-                        <div class="article">
-                            <p><IconButton><Lock style={{ color: 'grey' }} /></IconButton>
-                               <TextField id="filled-basic" required='required' type='password' size='small' label="New Password" variant="standard" onChange={this.handleChange.bind(this, "password")} /></p>
-                               <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
+                    <form onSubmit={this.contactPasswordSubmit.bind(this)}>
+                        <div class="article-container">
+                            <div class="article">
+                                <p><IconButton><Lock style={{ color: 'grey' }} /></IconButton>
+                                    <TextField id="filled-basic" required='required' type='password' size='small' label="New Password" variant="standard" onChange={this.handleChange.bind(this, "password")} /></p>
+                                <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
+                            </div>
+                            <div class="article">
+                                <p><IconButton><Lock style={{ color: 'grey' }} /></IconButton>
+                                    <TextField id="filled-basic" required='required' type='password' size='small' label="Confirm New Password" variant="standard" onChange={this.handleChange.bind(this, "confirmPassword")} /></p>
+                                <span style={{ color: "red" }}>{this.state.errors["confirmPassword"]}</span>
+                            </div>
                         </div>
-                        <div class="article">
-                            <p><IconButton><Lock style={{ color: 'grey' }} /></IconButton>
-                               <TextField id="filled-basic" required='required' type='password' size='small' label="Confirm New Password" variant="standard" onChange={this.handleChange.bind(this, "confirmPassword")} /></p>
-                               <span style={{ color: "red" }}>{this.state.errors["confirmPassword"]}</span>
-                        </div>
-                    </div>
-                    <br></br>
-                    <button type='submit'>Submit</button>
+                        <br></br>
+                        <button type='submit'>Submit</button>
                     </form>
                 </Modal>
             </div>

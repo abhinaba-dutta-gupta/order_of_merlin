@@ -21,10 +21,13 @@ users.route('/login').post((req, res) => {
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
                     console.log(user);
-                    res.status(200).json({ user: 'User exist' })
-
+                    const userDetails = {
+                        name: user.name,
+                        interviewsno: user.interviewsno
+                    }
+                    res.status(200).json({ user: 'User exist' });
+                    return userDetails;
                 }
-
             }
             else {
                 res.json({
@@ -35,6 +38,16 @@ users.route('/login').post((req, res) => {
         .catch(err => {
             res.send('error: ' + err)
         })
+});
+
+users.route('/getAssociate').post((req, res) => {
+    userSchemaaa.findOne({
+        email: req.body.email
+    }) 
+        .then(signup => {
+            res.json(signup);
+        })
+        .catch(err => res.status(400).json('error: ' + err));
 });
 
 module.exports = users;
