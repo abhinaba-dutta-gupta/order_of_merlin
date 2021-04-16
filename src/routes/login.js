@@ -21,12 +21,7 @@ users.route('/login').post((req, res) => {
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
                     console.log(user);
-                    const userDetails = {
-                        name: user.name,
-                        interviewsno: user.interviewsno
-                    }
-                    res.status(200).json({ user: 'User exist' });
-                    return userDetails;
+                    res.json(user);
                 }
             }
             else {
@@ -44,8 +39,8 @@ users.route('/getAssociate').post((req, res) => {
     userSchemaaa.findOne({
         email: req.body.email
     }) 
-        .then(signup => {
-            res.json(signup);
+        .then(associate => {
+            res.json({associate});
         })
         .catch(err => res.status(400).json('error: ' + err));
 });

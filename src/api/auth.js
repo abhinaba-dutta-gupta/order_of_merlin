@@ -26,7 +26,7 @@ export const login = user => {
         .then(res => {
             // if (typeof res.data === 'string') {
             console.log(res);
-            localStorage.setItem('userData', res.config.data);
+            localStorage.setItem('userData', JSON.stringify(res.data));
             //     return res.data;
             // }
         })

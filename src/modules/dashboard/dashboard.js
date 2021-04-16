@@ -22,7 +22,8 @@ class Dashboard extends Component {
             show1: false,
             drawerOpen: false,
             panelOpen: false,
-            email: ''
+            name: '',
+            noOfInterviews: 0
         }
     }
 
@@ -94,19 +95,23 @@ class Dashboard extends Component {
         })
     }
 
+    // calcInterview = () => {
+    //     {this.state.noOfInterviews}
+    // }
+
     componentDidMount = () => {
         const user = JSON.parse(localStorage.getItem('userData'));
         console.log(user);
         this.setState({
-            email: this.state.email
+            name: user.name
         })
         // window.onpopstate = function () {
         //     alert("Back/Forward clicked!");
         // }
         associate(user.email)
-        .then (res => {
-            console.log(res);
-        })
+            .then(res => {
+                console.log(res);
+            })
     }
 
     render() {
@@ -136,11 +141,12 @@ class Dashboard extends Component {
                 </AppbarLogin>
                 <br></br>
                 <br></br>
-                <h1 className='title'>Welcome, {this.state.email}</h1>
+                <h1 className='title'>Welcome, {this.state.name}</h1>
                 <br></br>
                 <br></br>
                 <Grid container className='grid' spacing={12} justify='center' alignItems='center'>
-                    <Grid item sm={4}><Paper style={{ padding: '5%', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>No of interviews <Typography variant='h1'>97</Typography></Paper></Grid>
+                    <Grid item sm={4}><Paper style={{ padding: '5%', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>No of interviews
+                    <Typography variant='h1'>{this.calcInterview}97</Typography></Paper></Grid>
                 </Grid>
                 <br></br>
                 <br></br>
