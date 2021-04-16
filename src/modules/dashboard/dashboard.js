@@ -95,9 +95,6 @@ class Dashboard extends Component {
         })
     }
 
-    // calcInterview = () => {
-    //     {this.state.noOfInterviews}
-    // }
 
     componentDidMount = () => {
         const user = JSON.parse(localStorage.getItem('userData'));

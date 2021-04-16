@@ -14,12 +14,6 @@ class Signup extends Component {
     super()
     this.state = {
       show: false,
-      // email: '',
-      // name: '',
-      // phone: '',
-      // password: '',
-      // associateid: '',
-      // personalQuestion: '',
       fields: {},
       errors: {}
     }
@@ -59,7 +53,7 @@ class Signup extends Component {
       errors["personalQuestion"] = "! Field cannot be empty";
     }
 
-    if (!(fields["personalQuestion"].length > 0 && fields["personalQuestion"].length <= 20  && fields["name"].match(/^[a-zA-Z]+$/))) {
+    if (!(fields["personalQuestion"].length > 0 && fields["personalQuestion"].length <= 20 && fields["name"].match(/^[a-zA-Z]+$/))) {
       formIsValid = false;
       errors["personalQuestion"] = "! Invalid Associate ID";
     }
@@ -106,7 +100,6 @@ class Signup extends Component {
         phone: fields["phone"],
         password: fields["password"],
         associateid: fields["associateid"],
-        //interviewsno: this.state.interviewsno,
         personalQuestion: fields["personalQuestion"]
       }
       signup(userRegistration).then(res => {
@@ -131,8 +124,8 @@ class Signup extends Component {
 
   changeHandler = (field, e) => {
     let fields = this.state.fields;
-        fields[field] = e.target.value;
-        this.setState({ fields });
+    fields[field] = e.target.value;
+    this.setState({ fields });
   }
 
   redirectToSignin = () => {

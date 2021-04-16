@@ -16,7 +16,8 @@ class Profile extends Component {
         super()
         this.state = {
             show: false,
-            panelOpen: false
+            panelOpen: false,
+            fields: {}
         }
     }
 
@@ -35,7 +36,7 @@ class Profile extends Component {
         const { history } = this.props;
         if (history) history.push('/profile');
     }
-    
+
     confirm = () => {
         alert("Profile Updated Successfully!");
     }
@@ -52,13 +53,31 @@ class Profile extends Component {
         })
     }
 
+    changeHandler = (field, e) => {
+        let fields = this.state.fields;
+        fields[field] = e.target.value;
+        this.setState({ fields });
+    }
+
+    componentDidMount = () => {
+        const user = JSON.parse(localStorage.getItem('userData'));
+        console.log(user);
+        this.setState({
+            name: user.name,
+            email: user.email,
+            associateid: user.associateid,
+            phone: user.phone,
+            personalQuestion: user.personalQuestion
+        })
+    }
+
     render() {
 
         let panelClasses = 'side-panel'
         if (this.state.panelOpen) {
             panelClasses = 'side-panel open'
         }
-        
+
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
                 <AppbarLogin>
@@ -73,29 +92,29 @@ class Profile extends Component {
                 </AppbarLogin>
 
                 <br></br>
-                <h1 className='title' >Profile</h1>
+                <h1 className='title'> Profile </h1>
                 <br></br>
                 <div className='table-div'>
                     <Table striped bordered hover variant="dark">
                         <tr>
                             <td>Name</td>
-                            <td>Panchuuuuuu</td>
+                            <td>{this.state.name}</td>
                         </tr>
                         <tr>
                             <td>EmailID</td>
-                            <td>abc@gmail.com</td>
+                            <td>{this.state.email}</td>
                         </tr>
                         <tr>
                             <td>Associate ID</td>
-                            <td>856778</td>
+                            <td>{this.state.associateid}</td>
                         </tr>
                         <tr>
                             <td>Phone number</td>
-                            <td>12345</td>
+                            <td>{this.state.phone}</td>
                         </tr>
                         <tr>
-                            <td>Password</td>
-                            <td>******</td>
+                            <td>Personal Question</td>
+                            <td>{this.state.personalQuestion}</td>
                         </tr>
                     </Table>
                 </div>
@@ -110,15 +129,25 @@ class Profile extends Component {
                     <h1 className='title' > Edit Profile </h1>
                     <div class="article-container">
                         <div class="article">
-                            <p><TextField id="filled-basic" required='required' size='small' label="Associate Name" variant="filled" /></p>
-                            <p><TextField id="filled-basic" required='required' type='e-mail' size='small' label="Email-ID" variant="filled" /></p>
+                            <p>
+                                <TextField id="standard-basic" size='small' value={this.state.name} label="Associate Name" variant="standard" onChange={this.changeHandler.bind(this, "name")}/>
+                            </p>
+                            <p>
+                                <TextField id="standard-basic" type='e-mail' value={this.state.email} size='small' label="Email-ID" variant="standard" onChange={this.changeHandler.bind(this, "email")}/>
+                            </p>
                         </div>
                         <div class="article">
-                            <p><TextField id="filled-basic" type='number' size='small' label="Phone number" variant="filled" /></p>
-                            <p><TextField id="filled-basic" required='required' size='small' label="Associate ID" variant="filled" /></p>
+                            <p>
+                                <TextField id="standard-basic" type='text' value={this.state.phone} size='small' label="Phone number" variant="standard" onChange={this.changeHandler.bind(this, "phone")}/>
+                            </p>
+                            <p>
+                                <TextField id="standard-basic" size='small' value={this.state.associateid} label="Associate ID" variant="standard" onChange={this.changeHandler.bind(this, "associateid")}/>
+                            </p>
                         </div>
                     </div>
-                    <p><TextField id="filled-basic" required='required' type='password' size='small' label="Password" variant="filled" /></p>
+                    <p>
+                        <TextField id="standard-basic" size='small' value={this.state.personalQuestion} label="Personal Question" variant="standard" onChange={this.changeHandler.bind(this, "personalQuestion")}/>
+                    </p>
                     <button onClick={this.confirm}>Submit</button>
                 </Modal>
             </div>
