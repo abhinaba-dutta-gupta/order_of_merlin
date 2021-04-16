@@ -100,16 +100,16 @@ class Dashboard extends Component {
         const user = JSON.parse(localStorage.getItem('userData'));
         console.log(user);
         this.setState({
-            name: user.name
+            name: user.name,
+            email: user.email
         })
-        // window.onpopstate = function () {
-        //     alert("Back/Forward clicked!");
-        // }
+        console.log(user.email);
         associate(user.email)
             .then(res => {
-                console.log(res);
+                console.log(res)
             })
     }
+
 
     render() {
 

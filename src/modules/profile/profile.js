@@ -17,8 +17,77 @@ class Profile extends Component {
         this.state = {
             show: false,
             panelOpen: false,
-            fields: {}
+            fields: {},
+            errors: {}
         }
+    }
+
+    handleValidation() {
+        let fields = this.state.fields;
+        let errors = {};
+        let formIsValid = true;
+
+        //PhoneNumber Validation
+        if (!fields["phone"]) {
+            formIsValid = false;
+            errors["phone"] = "! Field cannot be empty";
+        }
+
+        if (!(fields["phone"].length === 10 && fields["phone"].match(/^[0-9]+$/))) {
+            formIsValid = false;
+            errors["phone"] = "! Invalid phone number";
+        }
+
+        //AssociateID Validation
+        if (!fields["associateid"]) {
+            formIsValid = false;
+            errors["associateid"] = "! Password cannot be empty";
+        }
+
+        if (!(fields["associateid"].length === 6 && fields["associateid"].match(/^[0-9]+$/))) {
+            formIsValid = false;
+            errors["associateid"] = "! Invalid Associate ID";
+        }
+
+        //PersonalQuestion Validation
+        if (!fields["personalQuestion"]) {
+            formIsValid = false;
+            errors["personalQuestion"] = "! Field cannot be empty";
+        }
+
+        if (!(fields["personalQuestion"].length > 0 && fields["personalQuestion"].length <= 20 && fields["name"].match(/^[a-zA-Z]+$/))) {
+            formIsValid = false;
+            errors["personalQuestion"] = "! Invalid Associate ID";
+        }
+
+        //Password Validation
+        if (!fields["password"]) {
+            formIsValid = false;
+            errors["password"] = "! Field cannot be empty";
+        }
+
+        if (!(fields["password"].length >= 4 && fields["password"].length <= 8)) {
+            formIsValid = false;
+            errors["password"] = "! Password length must be 4-8 characters";
+        }
+
+        //Email Validation
+        if (!fields["email"]) {
+            formIsValid = false;
+            errors["email"] = "! Field cannot be empty";
+        }
+
+        if (typeof fields["email"] !== "undefined") {
+            let lastAtPos = fields["email"].lastIndexOf('@');
+            let lastDotPos = fields["email"].lastIndexOf('.');
+
+            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') === -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+                formIsValid = false;
+                errors["email"] = "Email is not valid";
+            }
+        }
+        this.setState({ errors: errors });
+        return formIsValid;
     }
 
     showModal = e => {
@@ -101,7 +170,7 @@ class Profile extends Component {
                             <td>{this.state.name}</td>
                         </tr>
                         <tr>
-                            <td>EmailID</td>
+                            <td>Email ID</td>
                             <td>{this.state.email}</td>
                         </tr>
                         <tr>
@@ -130,23 +199,23 @@ class Profile extends Component {
                     <div class="article-container">
                         <div class="article">
                             <p>
-                                <TextField id="standard-basic" size='small' value={this.state.name} label="Associate Name" variant="standard" onChange={this.changeHandler.bind(this, "name")}/>
+                                <TextField id="standard-basic" size='small' defaultValue={this.state.name} label="Associate Name" variant="standard" onChange={this.changeHandler.bind(this, "name")} />
                             </p>
                             <p>
-                                <TextField id="standard-basic" type='e-mail' value={this.state.email} size='small' label="Email-ID" variant="standard" onChange={this.changeHandler.bind(this, "email")}/>
+                                <TextField id="standard-basic" type='e-mail' defaultValue={this.state.email} size='small' label="Email-ID" variant="standard" onChange={this.changeHandler.bind(this, "email")} />
                             </p>
                         </div>
                         <div class="article">
                             <p>
-                                <TextField id="standard-basic" type='text' value={this.state.phone} size='small' label="Phone number" variant="standard" onChange={this.changeHandler.bind(this, "phone")}/>
+                                <TextField id="standard-basic" type='text' defaultValue={this.state.phone} size='small' label="Phone number" variant="standard" onChange={this.changeHandler.bind(this, "phone")} />
                             </p>
                             <p>
-                                <TextField id="standard-basic" size='small' value={this.state.associateid} label="Associate ID" variant="standard" onChange={this.changeHandler.bind(this, "associateid")}/>
+                                <TextField id="standard-basic" size='small' defaultValue={this.state.associateid} label="Associate ID" variant="standard" onChange={this.changeHandler.bind(this, "associateid")} />
                             </p>
                         </div>
                     </div>
                     <p>
-                        <TextField id="standard-basic" size='small' value={this.state.personalQuestion} label="Personal Question" variant="standard" onChange={this.changeHandler.bind(this, "personalQuestion")}/>
+                        <TextField id="standard-basic" size='small' defaultValue={this.state.personalQuestion} label="Personal Question" variant="standard" onChange={this.changeHandler.bind(this, "personalQuestion")} />
                     </p>
                     <button onClick={this.confirm}>Submit</button>
                 </Modal>
