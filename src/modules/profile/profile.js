@@ -8,6 +8,7 @@ import Modal from '../../components/modal/modal';
 import Table from 'react-bootstrap/Table';
 import { withRouter } from "react-router-dom";
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
+import {editProfileInfo} from '../../api/auth';
 
 
 class Profile extends Component {
@@ -128,6 +129,22 @@ class Profile extends Component {
         this.setState({ fields });
     }
 
+    editDetails = () =>{
+        e.preventDefault();
+        const userDetails = {
+            email: fields["email"],
+            name: fields["name"],
+            phone: fields["phone"],
+            personalQuestion: fields["personalQuestion"]
+          }
+        editProfileInfo(userDetails).then(res=>{
+            console.log(res);
+       })
+       .catch(err=>{
+           console.log(err);
+       })
+    }
+
     componentDidMount = () => {
         const user = JSON.parse(localStorage.getItem('userData'));
         console.log(user);
@@ -196,6 +213,7 @@ class Profile extends Component {
 
                 <Modal onClose={this.showModal} show={this.state.show}>
                     <h1 className='title' > Edit Profile </h1>
+                    <form onSubmit={this.editDetails}>
                     <div class="article-container">
                         <div class="article">
                             <p>
@@ -214,6 +232,7 @@ class Profile extends Component {
                             </p>
                         </div>
                     </div>
+                    </form>
                     <p>
                         <TextField id="standard-basic" size='small' defaultValue={this.state.personalQuestion} label="Personal Question" variant="standard" onChange={this.changeHandler.bind(this, "personalQuestion")} />
                     </p>

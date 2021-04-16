@@ -26,10 +26,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error'))
 var users_sign = require('../routes/signup');
 var users_login = require('../routes/login');
 var users_pass = require('../routes/forgotPass');
+var users_edit = require('../routes/editProfile')
 //app.use('/users', users1);
 //app.use('/users', users2);
 app.use('/users', users_sign);
 app.use('/users', users_login);
 app.use('/users', users_pass);
+app.use('/users', users_edit);
 
 app.listen(port, () => console.log(`Listening on port ${port}.`));

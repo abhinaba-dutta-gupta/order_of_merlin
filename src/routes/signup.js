@@ -25,8 +25,10 @@ users.route('/signup').post((req, res) => {
         interviewsno: req.body.interviewsno,
         personalQuestion: req.body.personalQuestion
     }
-    userSchemaaa.findOne({
-        email: req.body.email
+    userSchemaaa.find({$and:[
+        {email: req.body.email},
+        {associateid: req.body.associateid}
+    ]
     })
         .then(user => {
             if (!user) {
