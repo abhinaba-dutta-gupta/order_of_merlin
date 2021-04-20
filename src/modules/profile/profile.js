@@ -8,7 +8,7 @@ import Modal from '../../components/modal/modal';
 import Table from 'react-bootstrap/Table';
 import { withRouter } from "react-router-dom";
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
-import {editProfileInfo} from '../../api/auth';
+import { editProfileInfo } from '../../api/auth';
 
 
 class Profile extends Component {
@@ -107,9 +107,6 @@ class Profile extends Component {
         if (history) history.push('/profile');
     }
 
-    confirm = () => {
-        alert("Profile Updated Successfully!");
-    }
 
     openPanel = () => {
         this.setState({
@@ -129,20 +126,23 @@ class Profile extends Component {
         this.setState({ fields });
     }
 
-    editDetails = () =>{
+    editDetails = (e) => {
         e.preventDefault();
+        let fields = this.state.fields;
         const userDetails = {
             email: fields["email"],
             name: fields["name"],
+            associateid: fields["associateid"],
             phone: fields["phone"],
             personalQuestion: fields["personalQuestion"]
-          }
-        editProfileInfo(userDetails).then(res=>{
+        }
+        console.log(userDetails);
+        editProfileInfo(userDetails).then(res => {
             console.log(res);
-       })
-       .catch(err=>{
-           console.log(err);
-       })
+        })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     componentDidMount = () => {
@@ -213,30 +213,30 @@ class Profile extends Component {
 
                 <Modal onClose={this.showModal} show={this.state.show}>
                     <h1 className='title' > Edit Profile </h1>
-                    <form onSubmit={this.editDetails}>
-                    <div class="article-container">
-                        <div class="article">
-                            <p>
-                                <TextField id="standard-basic" size='small' defaultValue={this.state.name} label="Associate Name" variant="standard" onChange={this.changeHandler.bind(this, "name")} />
-                            </p>
-                            <p>
-                                <TextField id="standard-basic" type='e-mail' defaultValue={this.state.email} size='small' label="Email-ID" variant="standard" onChange={this.changeHandler.bind(this, "email")} />
-                            </p>
+                    <form onSubmit={this.editDetails.bind(this)}>
+                        <div class="article-container">
+                            <div class="article">
+                                <p>
+                                    <TextField id="standard-basic" size='small' defaultValue={this.state.name} label="Associate Name" variant="standard" onChange={this.changeHandler.bind(this, "name")} />
+                                </p>
+                                <p>
+                                    <TextField id="standard-basic" type='e-mail' defaultValue={this.state.email} size='small' label="Email-ID" variant="standard" onChange={this.changeHandler.bind(this, "email")} />
+                                </p>
+                            </div>
+                            <div class="article">
+                                <p>
+                                    <TextField id="standard-basic" type='text' defaultValue={this.state.phone} size='small' label="Phone number" variant="standard" onChange={this.changeHandler.bind(this, "phone")} />
+                                </p>
+                                <p>
+                                    <TextField id="standard-basic" size='small' defaultValue={this.state.associateid} label="Associate ID" variant="standard" onChange={this.changeHandler.bind(this, "associateid")} />
+                                </p>
+                            </div>
                         </div>
-                        <div class="article">
-                            <p>
-                                <TextField id="standard-basic" type='text' defaultValue={this.state.phone} size='small' label="Phone number" variant="standard" onChange={this.changeHandler.bind(this, "phone")} />
-                            </p>
-                            <p>
-                                <TextField id="standard-basic" size='small' defaultValue={this.state.associateid} label="Associate ID" variant="standard" onChange={this.changeHandler.bind(this, "associateid")} />
-                            </p>
-                        </div>
-                    </div>
+                        <p>
+                            <TextField id="standard-basic" size='small' defaultValue={this.state.personalQuestion} label="Personal Question" variant="standard" onChange={this.changeHandler.bind(this, "personalQuestion")} />
+                        </p>
+                        <button type="submit">Submit</button>
                     </form>
-                    <p>
-                        <TextField id="standard-basic" size='small' defaultValue={this.state.personalQuestion} label="Personal Question" variant="standard" onChange={this.changeHandler.bind(this, "personalQuestion")} />
-                    </p>
-                    <button onClick={this.confirm}>Submit</button>
                 </Modal>
             </div>
         );

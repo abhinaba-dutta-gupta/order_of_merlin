@@ -51,29 +51,30 @@ export const forgetPassword = user => {
         })
 }
 
-// export const associate = user => {
-//     return axios.post('users/getAssociate', {
-//         email: user.email
-//     })
-//         .then(res => {
-//             console.log(res);
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         })
-// }
+export const associate = user => {
+    return axios.post('users/getAssociate', {
+        email: user.email
+    })
+        .then(res => {
+            console.log(res);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
 
 export const editProfileInfo = userEdit => {
     return axios.post('users/editProfile', {
         email: userEdit.email,
         name: userEdit.name,
+        associateid: userEdit.associateid,
         phone: userEdit.phone,
-        personalQuestion: newUser.personalQuestion
+        personalQuestion: userEdit.personalQuestion
     })
-    .then(res=>{
-        console.log(res);
-    })
-    .catch(err=>{
-        console.log(err);
-    })
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err);
+        })
 }
