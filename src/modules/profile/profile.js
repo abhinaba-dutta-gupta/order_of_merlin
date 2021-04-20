@@ -41,11 +41,6 @@ class Profile extends Component {
         if (history) history.push('/dashboard');
     }
 
-    redirectToProfile = () => {
-        const { history } = this.props;
-        if (history) history.push('/profile');
-    }
-
 
     openPanel = () => {
         this.setState({
@@ -65,6 +60,11 @@ class Profile extends Component {
         });
     }
 
+    redirectToProfile = () => {
+        const { history } = this.props;
+        if (history) history.push('/profile');
+    }
+
     editDetails = (e) => {
         e.preventDefault();
         const userDetails = {
@@ -75,9 +75,13 @@ class Profile extends Component {
             personalQuestion: this.state.personalQuestion
         }
         console.log(userDetails);
-        editProfileInfo(userDetails).then(res => {
-            console.log(res);
-        })
+        editProfileInfo(userDetails)
+            .then(res => {
+                this.setState({
+                    show: false
+                })
+                console.log(res);
+            })
             .catch(err => {
                 console.log(err);
             })

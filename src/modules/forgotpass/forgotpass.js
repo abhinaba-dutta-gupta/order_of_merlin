@@ -104,10 +104,11 @@ class ForgotPassword extends Component {
                 password: fields["password"],
                 confirmPassword: fields["confirmPassword"]
             }
-            forgetPassword(userLogin).then(res => {
-                this.redirectToSignin();
-                console.log(res);
-            });
+            forgetPassword(userLogin)
+                .then(res => {
+                    this.redirectToSignin();
+                    console.log(res);
+                });
         }
     }
 
