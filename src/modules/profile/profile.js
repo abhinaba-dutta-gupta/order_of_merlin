@@ -217,18 +217,44 @@ class Profile extends Component {
                         <div class="article-container">
                             <div class="article">
                                 <p>
-                                    <TextField id="standard-basic" size='small' defaultValue={this.state.name} label="Associate Name" variant="standard" onChange={this.changeHandler.bind(this, "name")} />
+                                    <TextField 
+                                    id="standard-basic" 
+                                    size='small' 
+                                    defaultValue={this.state.name} 
+                                    label="Associate Name" 
+                                    variant="standard" 
+                                    onChange={this.changeHandler.bind(this, "name")} />
                                 </p>
                                 <p>
-                                    <TextField id="standard-basic" type='e-mail' defaultValue={this.state.email} size='small' label="Email-ID" variant="standard" onChange={this.changeHandler.bind(this, "email")} />
+                                    <TextField 
+                                    id="standard-basic"
+                                    size='small' 
+                                    type='e-mail' 
+                                    defaultValue={this.state.email} 
+                                    label="Email-ID" 
+                                    variant="standard" 
+                                    onChange={this.changeHandler.bind(this, "email")} />
                                 </p>
                             </div>
                             <div class="article">
                                 <p>
-                                    <TextField id="standard-basic" type='text' defaultValue={this.state.phone} size='small' label="Phone number" variant="standard" onChange={this.changeHandler.bind(this, "phone")} />
+                                    <TextField 
+                                    id="standard-basic" 
+                                    type='text' 
+                                    defaultValue={this.state.phone} 
+                                    size='small' 
+                                    label="Phone number" 
+                                    variant="standard" 
+                                    onChange={this.changeHandler.bind(this, "phone")} />
                                 </p>
                                 <p>
-                                    <TextField id="standard-basic" size='small' defaultValue={this.state.associateid} label="Associate ID" variant="standard" onChange={this.changeHandler.bind(this, "associateid")} />
+                                    <TextField 
+                                    id="standard-basic" 
+                                    size='small' 
+                                    defaultValue={this.state.associateid} 
+                                    label="Associate ID" 
+                                    variant="standard" 
+                                    onChange={this.changeHandler.bind(this, "associateid")} />
                                 </p>
                             </div>
                         </div>
