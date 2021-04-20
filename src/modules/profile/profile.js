@@ -15,81 +15,20 @@ class Profile extends Component {
 
     constructor() {
         super()
+        this.changeHandler = this.changeHandler.bind(this);
+        this.editDetails = this.editDetails.bind(this);
         this.state = {
             show: false,
             panelOpen: false,
-            fields: {},
+            name: '',
+            email: '',
+            associateid: '',
+            phone: '',
+            personalQuestion: '',
             errors: {}
         }
     }
 
-    handleValidation() {
-        let fields = this.state.fields;
-        let errors = {};
-        let formIsValid = true;
-
-        //PhoneNumber Validation
-        if (!fields["phone"]) {
-            formIsValid = false;
-            errors["phone"] = "! Field cannot be empty";
-        }
-
-        if (!(fields["phone"].length === 10 && fields["phone"].match(/^[0-9]+$/))) {
-            formIsValid = false;
-            errors["phone"] = "! Invalid phone number";
-        }
-
-        //AssociateID Validation
-        if (!fields["associateid"]) {
-            formIsValid = false;
-            errors["associateid"] = "! Password cannot be empty";
-        }
-
-        if (!(fields["associateid"].length === 6 && fields["associateid"].match(/^[0-9]+$/))) {
-            formIsValid = false;
-            errors["associateid"] = "! Invalid Associate ID";
-        }
-
-        //PersonalQuestion Validation
-        if (!fields["personalQuestion"]) {
-            formIsValid = false;
-            errors["personalQuestion"] = "! Field cannot be empty";
-        }
-
-        if (!(fields["personalQuestion"].length > 0 && fields["personalQuestion"].length <= 20 && fields["name"].match(/^[a-zA-Z]+$/))) {
-            formIsValid = false;
-            errors["personalQuestion"] = "! Invalid Associate ID";
-        }
-
-        //Password Validation
-        if (!fields["password"]) {
-            formIsValid = false;
-            errors["password"] = "! Field cannot be empty";
-        }
-
-        if (!(fields["password"].length >= 4 && fields["password"].length <= 8)) {
-            formIsValid = false;
-            errors["password"] = "! Password length must be 4-8 characters";
-        }
-
-        //Email Validation
-        if (!fields["email"]) {
-            formIsValid = false;
-            errors["email"] = "! Field cannot be empty";
-        }
-
-        if (typeof fields["email"] !== "undefined") {
-            let lastAtPos = fields["email"].lastIndexOf('@');
-            let lastDotPos = fields["email"].lastIndexOf('.');
-
-            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') === -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
-                formIsValid = false;
-                errors["email"] = "Email is not valid";
-            }
-        }
-        this.setState({ errors: errors });
-        return formIsValid;
-    }
 
     showModal = e => {
         this.setState({
@@ -120,21 +59,20 @@ class Profile extends Component {
         })
     }
 
-    changeHandler = (field, e) => {
-        let fields = this.state.fields;
-        fields[field] = e.target.value;
-        this.setState({ fields });
+    changeHandler = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
 
     editDetails = (e) => {
         e.preventDefault();
-        let fields = this.state.fields;
         const userDetails = {
-            email: fields["email"],
-            name: fields["name"],
-            associateid: fields["associateid"],
-            phone: fields["phone"],
-            personalQuestion: fields["personalQuestion"]
+            email: this.state.email,
+            name: this.state.name,
+            associateid: this.state.associateid,
+            phone: this.state.phone,
+            personalQuestion: this.state.personalQuestion
         }
         console.log(userDetails);
         editProfileInfo(userDetails).then(res => {
@@ -213,53 +151,64 @@ class Profile extends Component {
 
                 <Modal onClose={this.showModal} show={this.state.show}>
                     <h1 className='title' > Edit Profile </h1>
-                    <form onSubmit={this.editDetails.bind(this)}>
+                    <form onSubmit={this.editDetails}>
                         <div class="article-container">
                             <div class="article">
                                 <p>
-                                    <TextField 
-                                    id="standard-basic" 
-                                    size='small' 
-                                    defaultValue={this.state.name} 
-                                    label="Associate Name" 
-                                    variant="standard" 
-                                    onChange={this.changeHandler.bind(this, "name")} />
+                                    <TextField
+                                        id="standard-basic"
+                                        name="name"
+                                        size='small'
+                                        defaultValue={this.state.name}
+                                        label="Associate Name"
+                                        variant="standard"
+                                        onChange={this.changeHandler} />
                                 </p>
                                 <p>
-                                    <TextField 
-                                    id="standard-basic"
-                                    size='small' 
-                                    type='e-mail' 
-                                    defaultValue={this.state.email} 
-                                    label="Email-ID" 
-                                    variant="standard" 
-                                    onChange={this.changeHandler.bind(this, "email")} />
+                                    <TextField
+                                        id="standard-basic"
+                                        name="email"
+                                        size='small'
+                                        type='e-mail'
+                                        defaultValue={this.state.email}
+                                        label="Email-ID"
+                                        variant="standard"
+                                        onChange={this.changeHandler} />
                                 </p>
                             </div>
                             <div class="article">
                                 <p>
-                                    <TextField 
-                                    id="standard-basic" 
-                                    type='text' 
-                                    defaultValue={this.state.phone} 
-                                    size='small' 
-                                    label="Phone number" 
-                                    variant="standard" 
-                                    onChange={this.changeHandler.bind(this, "phone")} />
+                                    <TextField
+                                        id="standard-basic"
+                                        name="phone"
+                                        type='text'
+                                        defaultValue={this.state.phone}
+                                        size='small'
+                                        label="Phone number"
+                                        variant="standard"
+                                        onChange={this.changeHandler} />
                                 </p>
                                 <p>
-                                    <TextField 
-                                    id="standard-basic" 
-                                    size='small' 
-                                    defaultValue={this.state.associateid} 
-                                    label="Associate ID" 
-                                    variant="standard" 
-                                    onChange={this.changeHandler.bind(this, "associateid")} />
+                                    <TextField
+                                        id="standard-basic"
+                                        name="associateid"
+                                        size='small'
+                                        defaultValue={this.state.associateid}
+                                        label="Associate ID"
+                                        variant="standard"
+                                        onChange={this.changeHandler} />
                                 </p>
                             </div>
                         </div>
                         <p>
-                            <TextField id="standard-basic" size='small' defaultValue={this.state.personalQuestion} label="Personal Question" variant="standard" onChange={this.changeHandler.bind(this, "personalQuestion")} />
+                            <TextField
+                                id="standard-basic"
+                                name="personalQuestion"
+                                size='small'
+                                defaultValue={this.state.personalQuestion}
+                                label="Personal Question"
+                                variant="standard"
+                                onChange={this.changeHandler} />
                         </p>
                         <button type="submit">Submit</button>
                     </form>
