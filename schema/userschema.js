@@ -29,7 +29,8 @@ const userSchemaa = new Schema({
     personalQuestion:{
         type: String,
         required: true
-    }
+    },
+
 });
 
 module.exports = userSchemaaa = mongoose.model('users', userSchemaa);

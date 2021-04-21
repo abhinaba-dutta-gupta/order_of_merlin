@@ -97,7 +97,7 @@ class ForgotPassword extends Component {
         e.preventDefault();
         let fields = this.state.fields;
 
-        if (this.handleValidation()) {
+        if (this.handlePasswordValidation()) {
             const userLogin = {
                 email: fields["email"],
                 personalQuestion: fields["personalQuestion"],
