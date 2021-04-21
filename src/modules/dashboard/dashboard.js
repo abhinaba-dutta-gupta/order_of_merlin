@@ -9,6 +9,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Person, Domain, CallSplit, Keyboard, Menu, AccountCircle } from '@material-ui/icons';
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
 import { associate } from '../../api/auth';
+import { addCandidate } from '../../api/candidateAuth';
 
 
 class Dashboard extends Component {
@@ -23,7 +24,12 @@ class Dashboard extends Component {
             drawerOpen: false,
             panelOpen: false,
             name: '',
-            noOfInterviews: 0
+            associateid: '',
+            email: '',
+            noOfInterviews: 0,
+            candidateName: '',
+            institute: '',
+            stream: ''
         }
     }
 
@@ -44,7 +50,9 @@ class Dashboard extends Component {
     }
 
     handleChange = (event) => {
-        this.setState(event.target.value);
+        this.setState({
+            stream: event.target.value
+        });
     }
 
     redirectToProfile = () => {
@@ -95,13 +103,36 @@ class Dashboard extends Component {
         })
     }
 
+    changeDetails = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    createInterview = () => {
+        const candidateDetails = {
+            candidateName: this.state.candidateName,
+            institute: this.state.institute,
+            stream: this.state.stream,
+        }
+        console.log(candidateDetails);
+        addCandidate(candidateDetails)
+        .then(res=>{
+            console.log(res);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
 
     componentDidMount = () => {
         const user = JSON.parse(localStorage.getItem('userData'));
         console.log(user);
         this.setState({
             name: user.name,
-            email: user.email
+            email: user.email,
+            associateid: user.associateid
         })
         console.log(user.email);
         associate(user.email)
@@ -159,10 +190,8 @@ class Dashboard extends Component {
                                 name="candidate1"
                                 size='large'
                                 precision={0.5}
-                                value={this.value}
-                                onChange={(event, newValue) => {
-                                    this.simpleRating(newValue);
-                                }}
+                                value={5}
+                                readOnly="true"
                             />
                         </Paper>
                     </Grid>
@@ -173,10 +202,8 @@ class Dashboard extends Component {
                                 name="candidate2"
                                 size='large'
                                 precision={0.5}
-                                value={this.value}
-                                onChange={(event, newValue) => {
-                                    this.simpleRating(newValue);
-                                }}
+                                value={4}
+                                readOnly="true"
                             />
                         </Paper>
                     </Grid>
@@ -187,10 +214,8 @@ class Dashboard extends Component {
                                 name="candidate3"
                                 size='large'
                                 precision={0.5}
-                                value={this.value}
-                                onChange={(event, newValue) => {
-                                    this.simpleRating(newValue);
-                                }}
+                                value={1}
+                                readOnly="true"
                             />
                         </Paper>
                     </Grid>
@@ -201,23 +226,56 @@ class Dashboard extends Component {
 
                 <Modal onClose={this.showModal} show={this.state.show}>
                     <h1 className='title'>Create Interview</h1>
-                    <p><IconButton><Person style={{ color: 'grey' }} /></IconButton><TextField required='required' id="area-filled-basic" type='string' label="Candidate's Name" variant="standard" /></p>
-                    <p><IconButton><Domain style={{ color: 'grey' }} /></IconButton><TextField required='required' id="area-filled-basic" type='string' label="College/University Name" variant="standard" /></p>
-                    <p><FormControl className="form">
-                        <InputLabel id="demo-simple-select-label"><IconButton><CallSplit style={{ color: 'grey' }} /></IconButton>Choose Stream</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={this.state.value}
-                            onChange={this.handleChange}
-                        >
-                            <MenuItem value={"Mechanical"}>Mechanical</MenuItem>
-                            <MenuItem value="Elcetronics">EC Engg</MenuItem>
-                            <MenuItem value="Computer SC">CS Engg </MenuItem>
-                        </Select>
-                        <br></br>
-                    </FormControl></p>
-                    <button onClick={this.redirectToSubject}>Submit</button>
+                    <form onSubmit={this.createInterview}>
+                        <p>
+                            <IconButton>
+                                <Person style={{ color: 'grey' }} />
+                            </IconButton>
+                            <TextField
+                                required='required'
+                                id="area-filled-basic"
+                                type='string'
+                                label="Candidate's Name"
+                                name="candidateName"
+                                variant="standard"
+                                onChange={this.changeDetails} />
+                        </p>
+                        <p>
+                            <IconButton>
+                                <Domain style={{ color: 'grey' }} />
+                            </IconButton>
+                            <TextField
+                                required='required'
+                                id="area-filled-basic"
+                                type='string'
+                                label="Institute"
+                                name="institute"
+                                variant="standard"
+                                onChange={this.changeDetails} />
+                        </p>
+                        <p>
+                            <FormControl className="form">
+                                <InputLabel id="demo-simple-select-label">
+                                    <IconButton>
+                                        <CallSplit style={{ color: 'grey' }} />
+                                    </IconButton>
+                        Choose Stream
+                        </InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={this.state.value}
+                                    name="stream"
+                                    onChange={this.handleChange}
+                                >
+                                    <MenuItem value={"Mechanical"}>Mechanical</MenuItem>
+                                    <MenuItem value="Elcetronics">EC Engg</MenuItem>
+                                    <MenuItem value="Computer SC">CS Engg </MenuItem>
+                                </Select>
+                                <br></br>
+                            </FormControl></p>
+                        <button type="submit">Submit</button>
+                    </form>
                 </Modal>
                 <Modal onClose={this.showModal1} show={this.state.show1}>
                     <h1 className='title'>Add a Question</h1>
