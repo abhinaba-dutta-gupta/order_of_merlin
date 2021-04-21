@@ -20,13 +20,13 @@ candidates.route('/getAllCandidates').get((req, res) => {
 
 candidates.route('/addCandidate').post((req, res)=>{
     var candidateData = {
-        name: req.body.name,
+        candidateName: req.body.candidateName,
         stream: req.body.stream,
         institute: req.body.institute,
         associateid: req.body.associateid
     }
     candidateSchemaaa.findOne({
-        name: req.body.name
+        candidateName: req.body.candidateName
     })
     .then(candidate=>{
         if(!candidate){

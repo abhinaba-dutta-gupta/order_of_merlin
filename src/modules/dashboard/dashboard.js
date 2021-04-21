@@ -109,7 +109,8 @@ class Dashboard extends Component {
         })
     }
 
-    createInterview = () => {
+    createInterview = (e) => {
+        e.preventDefault();
         const candidateDetails = {
             candidateName: this.state.candidateName,
             institute: this.state.institute,
@@ -119,6 +120,9 @@ class Dashboard extends Component {
         console.log(candidateDetails);
         addCandidate(candidateDetails)
         .then(res=>{
+            //console.log(res.data);
+            localStorage.setItem('candidateData', JSON.stringify(candidateDetails));
+            this.redirectToSubject();
             console.log(res);
         })
         .catch(err=>{
@@ -136,7 +140,7 @@ class Dashboard extends Component {
             associateid: user.associateid
         })
         console.log(user.email);
-        associate(user.email)
+        associate(this.state.email)
             .then(res => {
                 console.log(res)
             })

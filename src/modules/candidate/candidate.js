@@ -8,7 +8,7 @@ import { TableContainer, Table } from 'react-custom-table';
 import { Scrollbars } from 'rc-scrollbars';
 import { withRouter } from "react-router-dom";
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
-
+import {showCandidates} from '../../api/candidateAuth';
 
 class Candidate extends Component {
 
@@ -17,7 +17,8 @@ class Candidate extends Component {
         this.state = {
             value: 0,
             setValue: 0,
-            panelOpen: false
+            panelOpen: false,
+            associateid: ''
         }
     }
     
@@ -51,7 +52,22 @@ class Candidate extends Component {
             panelOpen: false
         })
     }
-
+    
+    componentDidMount = () =>{
+        const user = JSON.parse(localStorage.getItem('userData'));
+        console.log(user);
+        this.setState({
+            associateid: user.associateid
+        })
+        const idDetails = {
+            associateid: user.associateid
+        }
+        console.log(idDetails);
+        showCandidates(idDetails)
+            .then(res => {
+                console.log(res)
+            })
+    }
 
     render() {
 

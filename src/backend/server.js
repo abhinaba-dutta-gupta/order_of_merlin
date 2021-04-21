@@ -35,7 +35,9 @@ app.use('/users', users_pass);
 app.use('/users', users_edit);
 
 var all_candidate = require('../routes/newCandidate');
+var all_candidates_byId = require('../routes/showCandidate');
 
 app.use('/candidates', all_candidate);
+app.use('/candidates', all_candidates_byId);
 
 app.listen(port, () => console.log(`Listening on port ${port}.`));
