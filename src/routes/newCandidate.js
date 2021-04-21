@@ -2,11 +2,11 @@ const router = require('express');
 const candidates = router.Router();
 const candidateSchemaaa = require('../../schema/candidateschema');
 const cors = require('cors');
-const candidateschema = require('../../schema/candidateschema');
+// const candidateschema = require('../../schema/candidateschema');
 
 candidates.use(cors());
 
-candidates.route('/getAllCandidate').get((req, res) => {
+candidates.route('/getAllCandidates').get((req, res) => {
     candidateSchemaaa.find()
         .then(allCandidate => {
             console.log(allCandidate);
@@ -25,7 +25,7 @@ candidates.route('/addCandidate').post((req, res)=>{
         institute: req.body.institute,
         associateid: req.body.associateid
     }
-    candidateschema.findOne({
+    candidateSchemaaa.findOne({
         name: req.body.name
     })
     .then(candidate=>{

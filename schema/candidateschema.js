@@ -30,4 +30,4 @@ const candidateSchemaa = new Schema({
     }
 });
 
-module.exports = candidateSchemaaa = mongoose.model('candidates', candidateSchemaa);
+module.exports = mongoose.model('candidates', candidateSchemaa);

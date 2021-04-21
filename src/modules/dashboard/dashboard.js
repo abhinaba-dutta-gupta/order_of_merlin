@@ -114,6 +114,7 @@ class Dashboard extends Component {
             candidateName: this.state.candidateName,
             institute: this.state.institute,
             stream: this.state.stream,
+            associateid: this.state.associateid
         }
         console.log(candidateDetails);
         addCandidate(candidateDetails)
@@ -254,26 +255,18 @@ class Dashboard extends Component {
                                 onChange={this.changeDetails} />
                         </p>
                         <p>
-                            <FormControl className="form">
-                                <InputLabel id="demo-simple-select-label">
-                                    <IconButton>
-                                        <CallSplit style={{ color: 'grey' }} />
-                                    </IconButton>
-                        Choose Stream
-                        </InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    value={this.state.value}
-                                    name="stream"
-                                    onChange={this.handleChange}
-                                >
-                                    <MenuItem value={"Mechanical"}>Mechanical</MenuItem>
-                                    <MenuItem value="Elcetronics">EC Engg</MenuItem>
-                                    <MenuItem value="Computer SC">CS Engg </MenuItem>
-                                </Select>
-                                <br></br>
-                            </FormControl></p>
+                            <IconButton>
+                                <Domain style={{ color: 'grey' }} />
+                            </IconButton>
+                            <TextField
+                                required='required'
+                                id="area-filled-basic"
+                                type='string'
+                                label="Stream"
+                                name="stream"
+                                variant="standard"
+                                onChange={this.changeDetails} />
+                        </p>
                         <button type="submit">Submit</button>
                     </form>
                 </Modal>

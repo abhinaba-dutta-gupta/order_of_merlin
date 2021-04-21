@@ -258,3 +258,26 @@ hr {
     transform: translateX(0);
   }
 
+//stream
+
+// <p>
+                        //     <FormControl className="form">
+                        //         <InputLabel id="demo-simple-select-label">
+                        //             <IconButton>
+                        //                 <CallSplit style={{ color: 'grey' }} />
+                        //             </IconButton>
+                        // Choose Stream
+                        // </InputLabel>
+                        //         <Select
+                        //             labelId="demo-simple-select-label"
+                        //             id="demo-simple-select"
+                        //             value={this.state.value}
+                        //             name="stream"
+                        //             onChange={this.handleChange}
+                        //         >
+                        //             <MenuItem value={"Mechanical"}>Mechanical</MenuItem>
+                        //             <MenuItem value="Elcetronics">EC Engg</MenuItem>
+                        //             <MenuItem value="Computer SC">CS Engg </MenuItem>
+                        //         </Select>
+                        //         <br></br>
+                        //     </FormControl></p>
