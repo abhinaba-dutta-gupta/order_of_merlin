@@ -22,6 +22,9 @@ export const showCandidates = requiredId =>{
     })
     .then(res=>{
         console.log(res);
+        var allCandidate = [];
+        allCandidate.push(res.data);
+        return allCandidate;
     })
     .catch(err=>{
         console.log(err);
