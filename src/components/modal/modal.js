@@ -13,7 +13,7 @@ export default class Modal extends React.Component {
       <>
         <div className="overlay" />
         <div class="modal" id="modal">
-          <button type="button" className="close" onClick={this.onClose} style={{float: 'right'}}>
+          <button type="button" className="close" onClick={this.onClose} style={{ float: 'right' }}>
             <span aria-hidden="true">&times;</span>
           </button>
           <div class="content">{this.props.children}</div>
