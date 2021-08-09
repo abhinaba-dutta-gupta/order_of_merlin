@@ -1,24 +1,20 @@
-.container{
+.container {
     margin-top: 0px;
     padding: 0px;
     height: 100vh;
     position: relative;
 }
 
-.paper{
+.paper-question {
+    top: calc(50% - 220px);
+    left: calc(50% - 430px);
     position: fixed;
-    margin-top: 20%;
-    margin-left: 50%;
-    transform: translate(-50%, -50%);
-    height: 70%;
-    width: 60%;
+    padding: 0 0 20px;
     background-color: white;
-    border-width: 1px;
-    border-color: #00B3B3;
-    border-style: solid;
+    border: 1px solid #00B3B3;
 }
 
-.head{
+.head {
     height: 9%;
     font-family: Arial, Helvetica, sans-serif;
     font-variant: normal;
@@ -40,7 +36,6 @@ h1,h2,h3{
 #triangle {
     width: 0;
     height: 0;
-    border-left: 20x solid transparent;
     border-right: 40px solid transparent;
     border-bottom: 40px solid rgb(176, 176, 176);
     transform: rotate(90deg);
@@ -110,19 +105,16 @@ hr {
 }
 
 .side-panel {
-    padding-top: 1%; 
-    height: 7%;
     background: #002233;
     color: white;
     position: fixed;
-    top: 8.5%;
-    right: 0;
-    width: 8%;
-    z-index: 200;
-    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5); 
     transform: translateX(100%);
     transition: transform;
+    padding: 10px;
+    left: 100%;
+    top: 11%;
   }
   .side-panel.open {
     transform: translateX(0);
+    left: 100%;
   }

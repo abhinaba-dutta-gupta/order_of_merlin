@@ -27,6 +27,7 @@ h1,h2,h3{
     color: #008099;
     font-family: Arial, Helvetica, sans-serif;
     font-variant: normal;
+    padding: 20px 0 20px;
 }
 
 .card-title {

@@ -109,6 +109,7 @@ class Profile extends Component {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
                 <AppbarLogin>
+                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
                     <Tabs
                         indicatorColor="primary"
                         textColor="white"
@@ -116,7 +117,6 @@ class Profile extends Component {
                         <Tab label="Dashboard" onClick={this.redirectToDashboard} />
                         <Tab label="Profile" onClick={this.redirectToProfile} />
                     </Tabs>
-                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
                 </AppbarLogin>
 
                 <br></br>

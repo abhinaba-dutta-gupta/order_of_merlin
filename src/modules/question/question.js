@@ -72,6 +72,7 @@ class Question extends Component {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
                 <AppbarLogin>
+                <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
                     <Tabs
                         indicatorColor="primary"
                         textColor="white"
@@ -79,11 +80,10 @@ class Question extends Component {
                         <Tab label="Dashboard" onClick={this.redirectToDashboard} />
                         <Tab label="Profile" onClick={this.redirectToProfile} />
                     </Tabs>
-                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
                 </AppbarLogin>
 
 
-                <div className='paper'>
+                <div className='paper-question'>
                     <div id='triangle'></div>
 
                     <div class="article-container">

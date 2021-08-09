@@ -119,15 +119,15 @@ class Dashboard extends Component {
         }
         console.log(candidateDetails);
         addCandidate(candidateDetails)
-        .then(res=>{
-            //console.log(res.data);
-            localStorage.setItem('candidateData', JSON.stringify(candidateDetails));
-            this.redirectToSubject();
-            console.log(res);
-        })
-        .catch(err=>{
-            console.log(err);
-        })
+            .then(res => {
+                //console.log(res.data);
+                localStorage.setItem('candidateData', JSON.stringify(candidateDetails));
+                this.redirectToSubject();
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
 
@@ -162,6 +162,8 @@ class Dashboard extends Component {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
                 <AppbarLogin>
+                    <IconButton onClick={this.openDrawer}><Menu style={{ color: 'white' }} /></IconButton>
+                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
                     <Tabs
                         indicatorColor="primary"
                         textColor="white"
@@ -169,27 +171,20 @@ class Dashboard extends Component {
                         <Tab label="Dashboard" onClick={this.redirectToDashboard} />
                         <Tab label="Profile" onClick={this.redirectToProfile} />
                     </Tabs>
-                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
-                    <IconButton onClick={this.openDrawer}><Menu style={{ color: 'white' }} /></IconButton>
                 </AppbarLogin>
-                <br></br>
-                <br></br>
+
                 <h1 className='title'>Welcome, {this.state.name}</h1>
-                <br></br>
-                <br></br>
-                <Grid container className='grid' spacing={12} justify='center' alignItems='center'>
-                    <Grid item sm={4}><Paper style={{ padding: '5%', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>No of interviews
-                    <Typography variant='h1'>{this.calcInterview}97</Typography></Paper></Grid>
+
+                <Grid container className='grid' spacing={1} justify='center' alignItems='center'>
+                    <Grid item sm={4}><Paper style={{ padding: '20px', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>No of interviews
+                        <Typography variant='h1'>{this.calcInterview}97</Typography></Paper></Grid>
                 </Grid>
-                <br></br>
-                <br></br>
-                <br></br>
+
                 <h1 className='title'>Recent Candidate's Statistics</h1>
-                <br></br>
-                <br></br>
+
                 <Grid container className='grid' spacing={7} justify='center' alignItems='center'>
                     <Grid item sm={3}>
-                        <Paper style={{ padding: '5%', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>Washington Shundar
+                        <Paper style={{ padding: '20px', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>Washington Shundar
                             <Typography component="legend">Selected</Typography>
                             <Rating
                                 name="candidate1"
@@ -201,7 +196,7 @@ class Dashboard extends Component {
                         </Paper>
                     </Grid>
                     <Grid item sm={3}>
-                        <Paper style={{ padding: '5%', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>K.L. Rahul
+                        <Paper style={{ padding: '20px', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>K.L. Rahul
                             <Typography component="legend">Selected</Typography>
                             <Rating
                                 name="candidate2"
@@ -213,7 +208,7 @@ class Dashboard extends Component {
                         </Paper>
                     </Grid>
                     <Grid item sm={3}>
-                        <Paper style={{ padding: '5%', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>M.S. Dhoni
+                        <Paper style={{ padding: '20px', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>M.S. Dhoni
                             <Typography component="legend">Selected</Typography>
                             <Rating
                                 name="candidate3"
@@ -309,7 +304,7 @@ class Dashboard extends Component {
                                 this.simpleRating(newValue);
                             }}
                         /></p>
-                    <br></br>
+    
                     <button onClick={this.confirm}>Submit</button>
                 </Modal>
 
@@ -319,14 +314,11 @@ class Dashboard extends Component {
 
                 <div className={drawerClasses} >
                     <h2 onClick={this.showModal}>Create Interview</h2>
-                    <br></br>
-                    <br></br>
+    
                     <h2 onClick={this.showModal1}>Add a Question</h2>
-                    <br></br>
-                    <br></br>
+    
                     <h2>About</h2>
-                    <br></br>
-                    <br></br>
+    
                     <h2 onClick={this.closeDrawer}>Close</h2>
                 </div>
 

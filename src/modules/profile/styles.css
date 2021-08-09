@@ -23,6 +23,7 @@ h1,h2,h3{
     color: #008099;
     font-family: cursive;
     font-variant: small-caps;
+    padding: 20px 0 20px;
 }
 
 .logo {
@@ -81,21 +82,18 @@ button:hover {
 }
 
 .side-panel {
-    padding-top: 1%; 
-    height: 7%;
     background: #002233;
     color: white;
     position: fixed;
-    top: 8.5%;
-    right: 0;
-    width: 8%;
-    z-index: 200;
-    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5); 
     transform: translateX(100%);
     transition: transform;
+    padding: 10px;
+    left: 100%;
+    top: 11%;
   }
   .side-panel.open {
     transform: translateX(0);
+    left: 94.5%;
   }
 
   .article-container {

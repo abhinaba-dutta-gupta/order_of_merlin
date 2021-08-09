@@ -79,6 +79,7 @@ class Candidate extends Component {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
                 <AppbarLogin>
+                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
                     <Tabs
                         indicatorColor="primary"
                         textColor="white"
@@ -86,15 +87,12 @@ class Candidate extends Component {
                         <Tab label="Dashboard" onClick={this.redirectToDashboard} />
                         <Tab label="Profile" onClick={this.redirectToProfile} />
                     </Tabs>
-                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
                 </AppbarLogin>
 
-                <br></br>
                 <h1 className='title'>Candidate Statistics</h1>
-                <br></br>
-                <br></br>
+
                 <div className='table-div'>
-                    <Scrollbars style={{ width: '850px', height: '430px' }}>
+                    <Scrollbars style={{ width: '850px', height: '350px' }}>
                         <TableContainer
                             columns={[
                                 { id: "name", title: "Name" },
@@ -145,9 +143,9 @@ class Candidate extends Component {
                         </TableContainer>
                     </Scrollbars>
                 </div>
-                <br></br>
+
                 <div><Pagination className='page' count={5} size="large" variant="text" shape="rounded" color="primary" /></div>
-                <br></br>
+                
                 <button onClick={this.redirectToSignin}>Exit App</button>
 
                 <div className={panelClasses}>
