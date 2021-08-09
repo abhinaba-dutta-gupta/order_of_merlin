@@ -8,14 +8,14 @@ class AppbarLogin extends Component {
     render() {
         return (
             <div>
-                <AppBar className='head' position="static" style={{ background: '#008099', padding: '0.5%' }}>
-                    <Toolbar>
+                <AppBar className='head' position="static" style={{ background: '#008099', padding: '10px', position: 'relative' }}>
+                    <Toolbar style={{ display: 'flex', flexDirection: 'row-reverse' }}>
                         <img
-                            className='logo'
+                            className='logo-appbar-login'
                             src={logo}
                             alt="Logo"
                         />
-                        <h1 className="brand">Questionnaire</h1>
+                        <h1 className="brand-appbar-login">Questionnaire</h1>
                         {this.props.children}
                     </Toolbar>
                 </AppBar>

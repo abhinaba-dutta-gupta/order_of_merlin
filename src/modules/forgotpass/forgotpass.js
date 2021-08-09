@@ -134,7 +134,7 @@ class ForgotPassword extends Component {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
                 <Appbar></Appbar>
-                <div className='paper-small'>
+                <div className='paper-forgot-pass'>
                     <div className="card-head"><h1 className='card-title'><IconButton><LockOpen style={{ color: 'white' }} /></IconButton>Forgot Password</h1></div>
                     <br></br>
                     <br></br>

@@ -88,7 +88,7 @@ class Signin extends Component {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
                 <Appbar></Appbar>
-                <div className='paper-small'>
+                <div className='paper-login'>
                     <div className="card-head"><h1 className='card-title'><IconButton><Lock style={{ color: 'white' }} /></IconButton>Login here</h1></div>
                     <br></br>
                     <form onSubmit={this.contactSubmit.bind(this)}>

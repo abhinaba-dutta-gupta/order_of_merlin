@@ -138,7 +138,7 @@ class Signup extends Component {
     return (
       <div className='container' style={{ backgroundImage: `url(${background})` }}>
         <Appbar></Appbar>
-        <div className='paper-small'>
+        <div className='paper-signup'>
           <div className="card-head"><h1 className='card-title'><IconButton><AccountBox style={{ color: 'white' }} /></IconButton>Register here</h1></div>
           <form onSubmit={this.contactSubmit.bind(this)}>
             <p>

@@ -5,17 +5,13 @@
     position: relative;
 }
 
-.paper-small{
+.paper-login{
+    top: calc(50% - 200px);
+    left: calc(50% - 155px);
     position: fixed;
-    margin-top: 20%;
-    margin-left: 50%;
-    transform: translate(-50%, -50%);
-    height: 73%;
-    width: 30%;
+    padding: 20px;
     background-color: white;
-    border-width: 1px;
-    border-color: #00B3B3;
-    border-style: solid;
+    border: 1px solid #00B3B3;
 }
 
 
