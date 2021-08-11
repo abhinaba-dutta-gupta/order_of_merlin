@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import '../login/styles.css';
-import background from '../../images/background.jpg';
+import background from '../../images/background.webp';
 import { TextField, IconButton } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { Email, Lock } from '@material-ui/icons';
 import { withRouter } from 'react-router-dom';
-import Appbar from '../../components/appbar/appbar';
+// import Appbar from '../../components/appbar/appbar';
 import { login } from '../../api/auth';
 
 
@@ -86,28 +86,32 @@ class Signin extends Component {
 
     render() {
         return (
-            <div className='container' style={{ backgroundImage: `url(${background})` }}>
-                <Appbar></Appbar>
-                <div className='paper-login'>
-                    <div className="card-head"><h1 className='card-title'><IconButton><Lock style={{ color: 'white' }} /></IconButton>Login here</h1></div>
-                    <br></br>
-                    <form onSubmit={this.contactSubmit.bind(this)}>
-                        <p>
-                            <IconButton><Email style={{ color: 'grey' }} /></IconButton>
-                            <TextField required='required' type='e-mail' size='small' label="Email-ID" variant="standard" onChange={this.handleChange.bind(this, "email")} />
-                        </p>
-                        <span style={{ color: "red" }}>{this.state.errors["email"]}</span>
-                        <p>
-                            <IconButton><Lock style={{ color: 'grey' }} /></IconButton>
-                            <TextField required='required' type='password' size='small' label="Password" variant="standard" onChange={this.handleChange.bind(this, "password")} />
-                        </p>
-                        <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
+            <div className="main-container">
+                <div style={{background: '#540094'}}>
+                </div>
+                <div className='container' style={{ backgroundImage: `url(${background})`, backgroundSize: 'contain' }}>
+                    {/*<Appbar></Appbar>*/}
+                    <div className='paper-login'>
+                        <div className="card-head"><h1 className='card-title'><IconButton><Lock style={{ color: 'white' }} /></IconButton>Login here</h1></div>
                         <br></br>
-                        <p><button type='submit'>Submit</button></p>
-                    </form>
-                    <div style={{ alignContent: 'left' }}>
-                        <p>Do not have an account?&nbsp;<Link to="./signup">REGISTER</Link></p>
-                        <Link to='./forgotpass'>Forgot password?</Link>
+                        <form onSubmit={this.contactSubmit.bind(this)}>
+                            <p>
+                                <IconButton><Email style={{ color: 'grey' }} /></IconButton>
+                                <TextField required='required' type='e-mail' size='small' label="Email-ID" variant="standard" onChange={this.handleChange.bind(this, "email")} />
+                            </p>
+                            <span style={{ color: "red" }}>{this.state.errors["email"]}</span>
+                            <p>
+                                <IconButton><Lock style={{ color: 'grey' }} /></IconButton>
+                                <TextField required='required' type='password' size='small' label="Password" variant="standard" onChange={this.handleChange.bind(this, "password")} />
+                            </p>
+                            <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
+                            <br></br>
+                            <p><button type='submit'>Submit</button></p>
+                        </form>
+                        <div style={{ alignContent: 'left' }}>
+                            <p>Do not have an account?&nbsp;<Link to="./signup">REGISTER</Link></p>
+                            <Link to='./forgotpass'>Forgot password?</Link>
+                        </div>
                     </div>
                 </div>
             </div>

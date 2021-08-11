@@ -5,13 +5,19 @@
     position: relative;
 }
 
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .paper-login{
     top: calc(50% - 200px);
-    left: calc(50% - 155px);
+    left: calc(75% - 180px);
     position: fixed;
-    padding: 20px;
+    padding: 0 45px 45px;
     background-color: white;
-    border: 1px solid #00B3B3;
+    border: 1px solid #540094;
+    border-bottom-right-radius: 40px;
 }
 
 
@@ -35,24 +41,24 @@ h1,h2,h3{
 }
 
 .card-head {
-    background-color: #008099;
+    background-color: #540094;
     display: inline-block;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-image:linear-gradient(#00B3B3,transparent);
+    background-image:linear-gradient(#8200E6,transparent);
 }
 
 button {
-    background-color: #00B3B3;
+    background-color: #540094;
     color: white;
     padding: 8px;
     border-radius: 10px;
-    border-color: #00B3B3;
+    border-color: #8200E6;
     font-variant: normal;
     font-size: 16px;
 }
 
 button:hover {
-    background-color: #0095B3;
+    background-color: #8200E6;
 }

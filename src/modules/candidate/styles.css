@@ -20,7 +20,7 @@ h1,h2,h3{
 
 
 .title{
-    color: #008099;
+    color: #8200E6;
     font-family: cursive;
     font-variant: small-caps;
     padding: 20px 0 20px;
@@ -68,17 +68,17 @@ Table {
 }
 
 button {
-    background-color: #00B3B3;
+    background-color: #540094;
     color: white;
     padding: 8px;
     border-radius: 10px;
-    border-color: #00B3B3;
+    border-color: #8200E6;
     font-variant: small-caps;
     font-size: 16px;
 }
 
 button:hover {
-    background-color: #0095B3;
+    background-color: #8200E6;
 }
 
 .side-panel {

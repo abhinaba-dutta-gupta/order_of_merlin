@@ -27,7 +27,11 @@ const candidateSchemaa = new Schema({
     },
     selectionstatus:{
         type: String
-    }
+    },
+    emailid: {
+        type: String,
+        required: true
+    },
 });
 
 module.exports = mongoose.model('candidates', candidateSchemaa);

@@ -23,10 +23,11 @@ candidates.route('/addCandidate').post((req, res)=>{
         candidateName: req.body.candidateName,
         stream: req.body.stream,
         institute: req.body.institute,
-        associateid: req.body.associateid
+        associateid: req.body.associateid,
+        emailid: req.body.emailid,
     }
     candidateSchemaaa.findOne({
-        candidateName: req.body.candidateName
+        emailid: req.body.emailid
     })
     .then(candidate=>{
         if(!candidate){

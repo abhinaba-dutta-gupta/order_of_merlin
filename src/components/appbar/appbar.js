@@ -7,7 +7,7 @@ class Appbar extends Component {
     render() {
         return (
             <div>
-                <AppBar className='head' position="static" style={{ background: '#008099', padding: '10px', position: 'relative' }}>
+                <AppBar className='head' position="static" style={{ background: '#540094', padding: '10px', position: 'relative' }}>
                     <Toolbar>
                         <img
                             className='logo-appbar'
