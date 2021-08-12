@@ -16,10 +16,13 @@ export default class Modal extends React.Component {
           <button type="button" className="close" onClick={this.onClose} style={{ float: 'right' }}>
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="content">{this.props.children}</div>
-          <div class="actions">
-            {/*<button type="submit" class="toggle-button">Ok</button>*/}
+          <div class="content">
+            <div></div>
+            {this.props.children}
           </div>
+          {/*<div class="actions">
+            <button type="submit" class="toggle-button">Ok</button>
+          </div>*/}
         </div>
       </>
     );

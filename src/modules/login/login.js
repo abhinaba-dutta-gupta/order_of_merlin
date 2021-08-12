@@ -7,6 +7,7 @@ import { Email, Lock } from '@material-ui/icons';
 import { withRouter } from 'react-router-dom';
 // import Appbar from '../../components/appbar/appbar';
 import { login } from '../../api/auth';
+import logo from '../../images/logo.png';
 
 
 class Signin extends Component {
@@ -87,12 +88,19 @@ class Signin extends Component {
     render() {
         return (
             <div className="main-container">
-                <div style={{background: '#540094'}}>
+                <div style={{ background: '#80cbce' }}>
+                    <img
+                        className='logo-login'
+                        src={logo}
+                        alt="Logo"
+                    />
+                    <h1 className="brand-login">Questionnaire</h1>
                 </div>
                 <div className='container' style={{ backgroundImage: `url(${background})`, backgroundSize: 'contain' }}>
                     {/*<Appbar></Appbar>*/}
+                    <div id="arrow"></div>
                     <div className='paper-login'>
-                        <div className="card-head"><h1 className='card-title'><IconButton><Lock style={{ color: 'white' }} /></IconButton>Login here</h1></div>
+                        <div className="card-head-login"><h1 className='card-title-login'><IconButton><Lock style={{ color: '#1f2833' }} /></IconButton>Login here</h1></div>
                         <br></br>
                         <form onSubmit={this.contactSubmit.bind(this)}>
                             <p>
@@ -106,7 +114,7 @@ class Signin extends Component {
                             </p>
                             <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
                             <br></br>
-                            <p><button type='submit'>Submit</button></p>
+                            <p><button className='submit-btn-login' type='submit'>Submit</button></p>
                         </form>
                         <div style={{ alignContent: 'left' }}>
                             <p>Do not have an account?&nbsp;<Link to="./signup">REGISTER</Link></p>

@@ -4,7 +4,6 @@ import background from '../../images/background.jpg';
 import { IconButton, Grid, Tabs, Tab, TextField, Slider } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import { Rating } from '@material-ui/lab';
-import { Scrollbars } from 'rc-scrollbars';
 import { withRouter } from "react-router-dom";
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
 
@@ -72,7 +71,7 @@ class Question extends Component {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
                 <AppbarLogin>
-                <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
+                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
                     <Tabs
                         indicatorColor="primary"
                         textColor="white"
@@ -86,15 +85,13 @@ class Question extends Component {
                 <div className='paper-question'>
                     <div id='triangle'></div>
 
-                    <div class="article-container">
-                        <div class="article">
+                    <div class="qa-container">
+                        <div class="question-block">
                             <h2>Question</h2>
-                            <Scrollbars class="scroll" style={{ width: '400px', height: '150px' }}>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
-                            </Scrollbars>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
                             <p>Stream : Computer Science</p>
                             <p>Difficulty : <Rating
                                 name="difficulty"
@@ -113,14 +110,12 @@ class Question extends Component {
                             <p>Remarks : <TextField></TextField></p>
                         </div>
                         <hr />
-                        <div class="article">
+                        <div class="answer-block">
                             <h2>Answer</h2>
-                            <Scrollbars style={{ width: '400px', height: '150px' }}>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
-                            </Scrollbars>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
                             <p>Keywords : Word, Word, word</p>
                             <br></br>
                             <p>Marks :</p>
@@ -132,13 +127,11 @@ class Question extends Component {
                                 style={{ color: '#002233' }} ></Slider>
                         </div>
                     </div>
-                    <br></br>
-                    <br></br>
                     <div className="button-group">
                         <Grid container spacing={10} justify='center' alignItems='center'>
-                            <Grid item><button>Skip Question</button></Grid>
-                            <Grid item><button>Next Question</button></Grid>
-                            <Grid item><button onClick={this.redirectToCandidate}>Finish Interview</button></Grid>
+                            <Grid item><button className='button-question'>Skip Question</button></Grid>
+                            <Grid item><button className='button-question'>Next Question</button></Grid>
+                            <Grid item><button className='button-question' onClick={this.redirectToCandidate}>Finish Interview</button></Grid>
                         </Grid>
                     </div>
                 </div>

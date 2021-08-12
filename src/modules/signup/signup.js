@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import '../signup/styles.css';
-import background from '../../images/background.jpg';
+import background from '../../images/background.webp';
 import { IconButton } from '@material-ui/core';
 import Modal from '../../components/modal/modal';
 import { AccountBox, PhoneAndroid, Email, CardTravel, Lock, Person, Security } from '@material-ui/icons';
 import { withRouter } from 'react-router-dom';
-import Appbar from '../../components/appbar/appbar';
+// import Appbar from '../../components/appbar/appbar';
 import { signup } from '../../api/auth';
+import logo from '../../images/logo.png';
 
 class Signup extends Component {
   constructor() {
@@ -136,47 +137,58 @@ class Signup extends Component {
   render() {
 
     return (
-      <div className='container' style={{ backgroundImage: `url(${background})` }}>
-        <Appbar></Appbar>
-        <div className='paper-signup'>
-          <div className="card-head"><h1 className='card-title'><IconButton><AccountBox style={{ color: 'white' }} /></IconButton>Register here</h1></div>
-          <form onSubmit={this.contactSubmit.bind(this)}>
-            <p>
-              <IconButton><Person style={{ color: 'grey' }} /></IconButton>
-              <TextField required='required' size='small' name="name" label="Associate Name" variant="standard" value={this.state.name} onChange={this.changeHandler.bind(this, "name")} />
-            </p>
-            <span style={{ color: "red" }}>{this.state.errors["name"]}</span>
-            <p>
-              <IconButton><Email style={{ color: 'grey' }} /></IconButton>
-              <TextField required='required' type='e-mail' size='small' name="email" label="Email-ID" variant="standard" value={this.state.email} onChange={this.changeHandler.bind(this, "email")} />
-            </p>
-            <span style={{ color: "red" }}>{this.state.errors["email"]}</span>
-            <p>
-              <IconButton><PhoneAndroid style={{ color: 'grey' }} /></IconButton>
-              <TextField type='text' size='small' name="phone" label="Phone number" variant="standard" value={this.state.phone} onChange={this.changeHandler.bind(this, "phone")} />
-            </p>
-            <span style={{ color: "red" }}>{this.state.errors["phone"]}</span>
-            <p>
-              <IconButton><CardTravel style={{ color: 'grey' }} /></IconButton>
-              <TextField required='required' size='small' name="associateid" label="Associate ID" variant="standard" value={this.state.associateid} onChange={this.changeHandler.bind(this, "associateid")} />
-            </p>
-            <span style={{ color: "red" }}>{this.state.errors["associateid"]}</span>
-            <p><IconButton><Lock style={{ color: 'grey' }} /></IconButton>
-              <TextField required='required' type='password' name="password" size='small' label="Password" variant="standard" value={this.state.password} onChange={this.changeHandler.bind(this, "password")} />
-            </p>
-            <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
-            <p>
-              <IconButton><Security style={{ color: 'grey' }} /></IconButton>
-              <TextField required='required' type='text' size='small' name="personalQuestion" label="Mother's maiden name" variant="standard" value={this.state.personalQuestion} onChange={this.changeHandler.bind(this, "personalQuestion")} />
-            </p>
-            <span style={{ color: "red" }}>{this.state.errors["personalQuestion"]}</span>
-            <button type="submit">Submit</button>
-          </form>
+      <div className="main-container">
+        <div style={{ background: '#80cbce' }}>
+          <img
+            className='logo-signup'
+            src={logo}
+            alt="Logo"
+          />
+          <h1 className="brand-login">Questionnaire</h1>
         </div>
-        <Modal onClose={this.showModal} show={this.state.show}>
-          <p>Your account has been created Successfully! A confirmation mail has been sent to your registered e-mail.</p>
-          <button onClick={this.redirectToSignin}>Back to Login</button>
-        </Modal>
+        <div className='container' style={{ backgroundImage: `url(${background})`, backgroundSize: 'contain' }}>
+          {/*<Appbar></Appbar>*/}
+          <div id="arrow"></div>
+          <div className='paper-signup'>
+            <div className="card-head-signup"><h1 className='card-title'><IconButton><AccountBox style={{ color: '#1f2833' }} /></IconButton>Register here</h1></div>
+            <form onSubmit={this.contactSubmit.bind(this)}>
+              <p>
+                <IconButton><Person style={{ color: 'grey' }} /></IconButton>
+                <TextField required='required' size='small' name="name" label="Associate Name" variant="standard" value={this.state.name} onChange={this.changeHandler.bind(this, "name")} />
+              </p>
+              <span style={{ color: "red" }}>{this.state.errors["name"]}</span>
+              <p>
+                <IconButton><Email style={{ color: 'grey' }} /></IconButton>
+                <TextField required='required' type='e-mail' size='small' name="email" label="Email-ID" variant="standard" value={this.state.email} onChange={this.changeHandler.bind(this, "email")} />
+              </p>
+              <span style={{ color: "red" }}>{this.state.errors["email"]}</span>
+              <p>
+                <IconButton><PhoneAndroid style={{ color: 'grey' }} /></IconButton>
+                <TextField type='text' size='small' name="phone" label="Phone number" variant="standard" value={this.state.phone} onChange={this.changeHandler.bind(this, "phone")} />
+              </p>
+              <span style={{ color: "red" }}>{this.state.errors["phone"]}</span>
+              <p>
+                <IconButton><CardTravel style={{ color: 'grey' }} /></IconButton>
+                <TextField required='required' size='small' name="associateid" label="Associate ID" variant="standard" value={this.state.associateid} onChange={this.changeHandler.bind(this, "associateid")} />
+              </p>
+              <span style={{ color: "red" }}>{this.state.errors["associateid"]}</span>
+              <p><IconButton><Lock style={{ color: 'grey' }} /></IconButton>
+                <TextField required='required' type='password' name="password" size='small' label="Password" variant="standard" value={this.state.password} onChange={this.changeHandler.bind(this, "password")} />
+              </p>
+              <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
+              <p>
+                <IconButton><Security style={{ color: 'grey' }} /></IconButton>
+                <TextField required='required' type='text' size='small' name="personalQuestion" label="Mother's maiden name" variant="standard" value={this.state.personalQuestion} onChange={this.changeHandler.bind(this, "personalQuestion")} />
+              </p>
+              <span style={{ color: "red" }}>{this.state.errors["personalQuestion"]}</span>
+              <button className='submit-btn-signup' type="submit">Submit</button>
+            </form>
+          </div>
+          <Modal onClose={this.showModal} show={this.state.show}>
+            <p>Your account has been created Successfully! A confirmation mail has been sent to your registered e-mail.</p>
+            <button onClick={this.redirectToSignin}>Back to Login</button>
+          </Modal>
+        </div>
       </div>
     );
   }
