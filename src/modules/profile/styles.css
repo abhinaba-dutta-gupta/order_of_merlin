@@ -20,22 +20,13 @@ h1,h2,h3{
 
 
 .title{
-    color: #540094;
+    color: #1f2833;
     font-family: cursive;
     font-variant: small-caps;
     padding: 20px 0 20px;
 }
 
-.logo {
-    height: 50px;
-    width: 45px;
-    z-index: 1000;
-    margin-top: 0.8%;
-    margin-left: 38.5%;
-    position: absolute;
-}
-
-.table-div {
+/* .table-div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +56,7 @@ tr:nth-child(odd) {
 
 Table {
     border-collapse: collapse;
-}
+} */
 
 button {
     background-color: #540094;

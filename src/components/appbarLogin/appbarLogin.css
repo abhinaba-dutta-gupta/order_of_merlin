@@ -9,3 +9,7 @@
     left: calc(50% - 100px);
     position: absolute;
 }
+
+.brand-appbar-login {
+    color: #1f2833;
+}

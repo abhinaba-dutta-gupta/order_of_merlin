@@ -162,11 +162,9 @@ class Dashboard extends Component {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
                 <AppbarLogin>
-                    <IconButton onClick={this.openDrawer}><Menu style={{ color: 'white' }} /></IconButton>
-                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
-                    <Tabs
-                        indicatorColor="primary"
-                        textColor="white"
+                    <IconButton onClick={this.openDrawer}><Menu style={{ color: '#1f2833' }} /></IconButton>
+                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: '#1f2833' }} /></IconButton>
+                    <Tabs style={{ color: '#1f2833' }}
                         aria-label="disabled tabs example">
                         <Tab label="Dashboard" onClick={this.redirectToDashboard} />
                         <Tab label="Profile" onClick={this.redirectToProfile} />

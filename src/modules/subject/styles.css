@@ -35,7 +35,7 @@ h1,h2,h3{
     position: absolute;
 }
 
-.table-div {
+/* .table-div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +65,7 @@ tr:nth-child(odd) {
 
 Table {
     border-collapse: collapse;
-}
+} */
 
 button {
     background-color: #540094;

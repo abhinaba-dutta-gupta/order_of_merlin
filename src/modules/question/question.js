@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../question/styles.css';
-import background from '../../images/background.jpg';
+import background from '../../images/background.webp';
 import { IconButton, Grid, Tabs, Tab, TextField, Slider } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import { Rating } from '@material-ui/lab';
@@ -69,12 +69,10 @@ class Question extends Component {
         }
 
         return (
-            <div className='container' style={{ backgroundImage: `url(${background})` }}>
+            <div className='container' style={{ backgroundImage: `url(${background})`, backgroundSize: 'contain' }}>
                 <AppbarLogin>
-                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
-                    <Tabs
-                        indicatorColor="primary"
-                        textColor="white"
+                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: '#1f2833' }} /></IconButton>
+                    <Tabs style={{ color: '#1f2833' }}
                         aria-label="disabled tabs example">
                         <Tab label="Dashboard" onClick={this.redirectToDashboard} />
                         <Tab label="Profile" onClick={this.redirectToProfile} />
@@ -83,7 +81,6 @@ class Question extends Component {
 
 
                 <div className='paper-question'>
-                    <div id='triangle'></div>
 
                     <div class="qa-container">
                         <div class="question-block">
@@ -117,9 +114,7 @@ class Question extends Component {
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             </p>
                             <p>Keywords : Word, Word, word</p>
-                            <br></br>
                             <p>Marks :</p>
-                            <br></br>
                             <Slider className="slider" max={10} min={0} step={1} defaultValue={0} valueLabelDisplay="on"
                                 value={this.state.value}
                                 onChange={this.handleChange}
@@ -134,6 +129,7 @@ class Question extends Component {
                             <Grid item><button className='button-question' onClick={this.redirectToCandidate}>Finish Interview</button></Grid>
                         </Grid>
                     </div>
+                    <div id='triangle'></div>
                 </div>
                 <div className={panelClasses}>
                     <h3 onClick={this.redirectToSignin}>Logout</h3>

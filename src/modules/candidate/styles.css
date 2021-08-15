@@ -18,21 +18,11 @@ h1,h2,h3{
     cursor: pointer;
 }
 
-
 .title{
-    color: #8200E6;
+    color: #1f2833;
     font-family: cursive;
     font-variant: small-caps;
     padding: 20px 0 20px;
-}
-
-.logo {
-    height: 50px;
-    width: 45px;
-    z-index: 1000;
-    margin-top: 0.8%;
-    margin-left: 38.5%;
-    position: absolute;
 }
 
 .table-div {
@@ -45,10 +35,7 @@ h1,h2,h3{
 
 td, th {
     color: rgba(255, 255, 255, 1);
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 20px 30px;
 }
 
 th {
@@ -67,18 +54,19 @@ Table {
     border-collapse: collapse;
 }
 
-button {
-    background-color: #540094;
+.exit-btn {
+    background-color: #45a29e;
     color: white;
     padding: 8px;
     border-radius: 10px;
-    border-color: #8200E6;
+    border-color: #66fcf1;
     font-variant: small-caps;
     font-size: 16px;
+    box-shadow: 5px 5px 6px 0 #999999;
 }
 
-button:hover {
-    background-color: #8200E6;
+.exit-btn:hover {
+    background-color: #66fcf1;
 }
 
 .side-panel {
@@ -95,12 +83,3 @@ button:hover {
     transform: translateX(0);
     left: 94.5%;
   }
-
-  .page {
-    font-family: cursive;
-    font-size: 18px;
-    justify-content: center;
-    align-items: center;
-    display: inline-block;
-    background-color: rgba(0,179,179,0.3)
-}

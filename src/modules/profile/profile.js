@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import '../profile/styles.css';
-import background from '../../images/background.jpg';
+import background from '../../images/background.webp';
 import { Tab, Tabs, IconButton } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import Modal from '../../components/modal/modal';
@@ -107,7 +107,7 @@ class Profile extends Component {
         }
 
         return (
-            <div className='container' style={{ backgroundImage: `url(${background})` }}>
+            <div className='container' style={{ backgroundImage: `url(${background})`, backgroundSize: 'contain' }}>
                 <AppbarLogin>
                     <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
                     <Tabs

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import '../candidate/styles.css';
-import background from '../../images/background.jpg';
+import background from '../../images/background.webp';
 import { IconButton, Tabs, Tab } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
-import { Rating, Pagination } from '@material-ui/lab';
+import { Rating } from '@material-ui/lab';
 import { TableContainer, Table } from 'react-custom-table';
-import { Scrollbars } from 'rc-scrollbars';
 import { withRouter } from "react-router-dom";
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
 import { showCandidates } from '../../api/candidateAuth';
@@ -77,9 +76,9 @@ class Candidate extends Component {
         }
 
         return (
-            <div className='container' style={{ backgroundImage: `url(${background})` }}>
+            <div className='container' style={{ backgroundImage: `url(${background})`, backgroundSize: 'contain' }}>
                 <AppbarLogin>
-                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
+                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: '#1f2833' }} /></IconButton>
                     <Tabs
                         indicatorColor="primary"
                         textColor="white"
@@ -92,7 +91,7 @@ class Candidate extends Component {
                 <h1 className='title'>Candidate Statistics</h1>
 
                 <div className='table-div'>
-                    <Scrollbars style={{ width: '850px', height: '350px' }}>
+                    <div style={{ width: '850px', height: '350px' }}>
                         <TableContainer
                             columns={[
                                 { id: "name", title: "Name" },
@@ -141,12 +140,12 @@ class Candidate extends Component {
                             ]} >
                             <Table className='table' />
                         </TableContainer>
-                    </Scrollbars>
+                    </div>
                 </div>
 
-                <div><Pagination className='page' count={5} size="large" variant="text" shape="rounded" color="primary" /></div>
+                {/*<div><Pagination className='page' count={5} size="large" variant="text" shape="rounded" color="primary" /></div>*/}
                 
-                <button onClick={this.redirectToSignin}>Exit App</button>
+                <button className='exit-btn' onClick={this.redirectToSignin}>Exit App</button>
 
                 <div className={panelClasses}>
                     <h3 onClick={this.redirectToSignin}>Logout</h3>
