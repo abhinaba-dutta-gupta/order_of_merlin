@@ -6,12 +6,13 @@ import code from '../../images/coding.png';
 import electronics from '../../images/cpu.png';
 import physics from '../../images/physics.png';
 import { IconButton, Tabs, Tab, Grid, InputLabel, MenuItem, Select, FormControl } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
+import { AccountCircle, Menu } from '@material-ui/icons';
 import Modal from '../../components/modal/modal';
 import { TableContainer, Table } from 'react-custom-table';
 import { Scrollbars } from 'rc-scrollbars';
 import { withRouter } from "react-router-dom";
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
+import Profile from '../profile/profile';
 
 
 class Subject extends Component {
@@ -22,6 +23,18 @@ class Subject extends Component {
             showbutton: false,
             panelOpen: false
         }
+    }
+
+    openDrawer = () => {
+        this.setState({
+            drawerOpen: !this.state.drawerOpen
+        })
+    }
+
+    closeDrawer = () => {
+        this.setState({
+            drawerOpen: false
+        })
     }
 
     toggle = () => {
@@ -51,11 +64,6 @@ class Subject extends Component {
         if (history) history.push('/dashboard');
     }
 
-    redirectToProfile = () => {
-        const { history } = this.props;
-        if (history) history.push('/profile');
-    }
-
     openPanel = () => {
         this.setState({
             panelOpen: !this.state.panelOpen
@@ -70,6 +78,11 @@ class Subject extends Component {
 
     render() {
 
+        let drawerClasses = 'side-drawer';
+        if (this.state.drawerOpen) {
+            drawerClasses = 'side-drawer open';
+        }
+
         let panelClasses = 'side-panel';
         if (this.state.panelOpen) {
             panelClasses = 'side-panel open';
@@ -78,13 +91,13 @@ class Subject extends Component {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})` }}>
                 <AppbarLogin>
+                    <IconButton onClick={this.openDrawer}><Menu style={{ color: '#1f2833' }} /></IconButton>
                     <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
                     <Tabs
                         indicatorColor="primary"
                         textColor="white"
                         aria-label="disabled tabs example">
                         <Tab label="Dashboard" onClick={this.redirectToDashboard} />
-                        <Tab label="Profile" onClick={this.redirectToProfile} />
                     </Tabs>
                 </AppbarLogin>
 
@@ -121,7 +134,7 @@ class Subject extends Component {
                 </div>
 
                 <div className={panelClasses}>
-                    <h3 onClick={this.redirectToSignin}>Logout</h3>
+                    <Profile></Profile>
                 </div>
 
                 <Modal onClose={this.showModal} show={this.state.show}>
@@ -140,6 +153,16 @@ class Subject extends Component {
                     </FormControl>
                     <p>Choose RANDOM for random question or choose SUGGESTION for suggestive question.</p>
                 </Modal>
+
+                <div className={drawerClasses} >
+                    <h2 onClick={this.showModal}>Create Interview</h2>
+    
+                    <h2 onClick={this.showModal1}>Add a Question</h2>
+    
+                    <h2>About</h2>
+    
+                    <h2 onClick={this.closeDrawer}>Close</h2>
+                </div>
             </div>
         );
     }

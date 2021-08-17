@@ -12,6 +12,7 @@
     background-color: white;
     border-radius: 10px;
     border-bottom-left-radius: 60px;
+    padding-top: 20px;
 }
 
 .head {
@@ -86,7 +87,7 @@ hr {
     width: auto
 }
 
-.side-panel {
+/* .side-panel {
     background: #002233;
     color: white;
     position: fixed;
@@ -99,7 +100,7 @@ hr {
   .side-panel.open {
     transform: translateX(0);
     left: 100%;
-  }
+  } */
 
   #triangle {
     width: 0;

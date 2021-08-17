@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import '../profile/styles.css';
-import background from '../../images/background.webp';
-import { Tab, Tabs, IconButton } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
+// import background from '../../images/background.jpg';
+// import { Tab, Tabs, IconButton } from '@material-ui/core';
+// import { AccountCircle } from '@material-ui/icons';
 import Modal from '../../components/modal/modal';
-import Table from 'react-bootstrap/Table';
-import { withRouter } from "react-router-dom";
-import AppbarLogin from '../../components/appbarLogin/appbarLogin';
+// import Table from 'react-bootstrap/Table';
+// import { withRouter } from "react-router-dom";
+// import AppbarLogin from '../../components/appbarLogin/appbarLogin';
 import { editProfileInfo } from '../../api/auth';
 
 
@@ -36,10 +36,10 @@ class Profile extends Component {
         });
     }
 
-    redirectToDashboard = () => {
-        const { history } = this.props;
-        if (history) history.push('/dashboard');
-    }
+    // redirectToDashboard = () => {
+    //     const { history } = this.props;
+    //     if (history) history.push('/dashboard');
+    // }
 
 
     openPanel = () => {
@@ -60,9 +60,14 @@ class Profile extends Component {
         });
     }
 
-    redirectToProfile = () => {
-        const { history } = this.props;
-        if (history) history.push('/profile');
+    // redirectToProfile = () => {
+    //     const { history } = this.props;
+    //     if (history) history.push('/profile');
+    // }
+
+    redirectToSignin = () => {
+        localStorage.removeItem('userData');
+        window.location = '/login';
     }
 
     editDetails = (e) => {
@@ -101,56 +106,67 @@ class Profile extends Component {
 
     render() {
 
-        let panelClasses = 'side-panel'
+        let panelClasses = 'side-panel-profile'
         if (this.state.panelOpen) {
-            panelClasses = 'side-panel open'
+            panelClasses = 'side-panel-profile open'
         }
 
         return (
-            <div className='container' style={{ backgroundImage: `url(${background})`, backgroundSize: 'contain' }}>
-                <AppbarLogin>
-                    <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
-                    <Tabs
-                        indicatorColor="primary"
-                        textColor="white"
-                        aria-label="disabled tabs example">
-                        <Tab label="Dashboard" onClick={this.redirectToDashboard} />
-                        <Tab label="Profile" onClick={this.redirectToProfile} />
-                    </Tabs>
-                </AppbarLogin>
+            // <div className='container' style={{ backgroundImage: `url(${background})`, backgroundSize: 'contain' }}>
+            //     <AppbarLogin>
+            //         <IconButton onClick={this.openPanel}><AccountCircle style={{ color: 'white' }} /></IconButton>
+            //         <Tabs
+            //             indicatorColor="primary"
+            //             textColor="white"
+            //             aria-label="disabled tabs example">
+            //             <Tab label="Dashboard" onClick={this.redirectToDashboard} />
+            //             <Tab label="Profile" onClick={this.redirectToProfile} />
+            //         </Tabs>
+            //     </AppbarLogin>
 
-                <br></br>
-                <h1 className='title'> Profile </h1>
-                <br></br>
-                <div className='table-div'>
-                    <Table striped bordered hover variant="dark">
-                        <tr>
-                            <td>Name</td>
-                            <td>{this.state.name}</td>
-                        </tr>
-                        <tr>
-                            <td>Email ID</td>
-                            <td>{this.state.email}</td>
-                        </tr>
-                        <tr>
-                            <td>Associate ID</td>
-                            <td>{this.state.associateid}</td>
-                        </tr>
-                        <tr>
-                            <td>Phone number</td>
-                            <td>{this.state.phone}</td>
-                        </tr>
-                        <tr>
-                            <td>Personal Question</td>
-                            <td>{this.state.personalQuestion}</td>
-                        </tr>
-                    </Table>
-                </div>
-                <br></br>
-                <button onClick={e => { this.showModal(e) }}>Edit Profile</button>
+            //     <br></br>
+            //     <h1 className='title'> Profile </h1>
+            //     <br></br>
+            //     <div className='table-div'>
+            //         <Table striped bordered hover variant="dark">
+            //             <tr>
+            //                 <td>Name</td>
+            //                 <td>{this.state.name}</td>
+            //             </tr>
+            //             <tr>
+            //                 <td>Email ID</td>
+            //                 <td>{this.state.email}</td>
+            //             </tr>
+            //             <tr>
+            //                 <td>Associate ID</td>
+            //                 <td>{this.state.associateid}</td>
+            //             </tr>
+            //             <tr>
+            //                 <td>Phone number</td>
+            //                 <td>{this.state.phone}</td>
+            //             </tr>
+            //             <tr>
+            //                 <td>Personal Question</td>
+            //                 <td>{this.state.personalQuestion}</td>
+            //             </tr>
+            //         </Table>
+            //     </div>
+            //     <br></br>
+            // </div>
 
+            <>
                 <div className={panelClasses}>
-                    <h3 onClick={this.redirectToSignin}>Logout</h3>
+                    <div id="panel-arrow"></div>
+                    <p>Name: {this.state.name}</p>
+                    <p>Email ID: {this.state.email}</p>
+                    <p>Associate ID: {this.state.associateid}</p>
+                    <p>Phone number: {this.state.phone}</p>
+                    <p>Personal Question: {this.state.personalQuestion}</p>
+                    <hr />
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                        <h3 onClick={e => { this.showModal(e) }}>Edit Profile</h3>
+                        <h3 onClick={this.redirectToSignin}>Logout</h3>
+                    </div>
                 </div>
 
                 <Modal onClose={this.showModal} show={this.state.show}>
@@ -217,9 +233,9 @@ class Profile extends Component {
                         <button type="submit">Submit</button>
                     </form>
                 </Modal>
-            </div>
+                </>
         );
     }
 }
 
-export default withRouter(Profile);
+export default Profile;

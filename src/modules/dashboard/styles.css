@@ -9,7 +9,7 @@ body {
     position: relative;
 }
 
-h1,h2,h3{
+/* h1,h2,h3{
     margin: auto;
     font-family: Arial, Helvetica, sans-serif;
     font-variant: small-caps;
@@ -21,7 +21,7 @@ h1,h2,h3{
     font-family: Arial, Helvetica, sans-serif;
     font-variant: small-caps;
     padding: 20px 0 20px;
-}
+} */
 
 .arrow {
     z-index: 1000;
@@ -65,13 +65,14 @@ button:hover {
     height: 100vh;
     display: grid;
     grid-template-rows: repeat(5, 1fr);
+    width: 250px;
  }
  .side-drawer.open {
     transform: translateX(0);
-    left: 85%;
+    left: 81.5%;
  }
 
-  .side-panel {
+  /* .side-panel {
     background: #002233;
     color: white;
     position: fixed;
@@ -84,7 +85,7 @@ button:hover {
   .side-panel.open {
     transform: translateX(0);
     left: 94.5%;
-  }
+  } */
 
   .form {
     width: 216px;

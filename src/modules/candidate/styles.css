@@ -69,7 +69,7 @@ Table {
     background-color: #66fcf1;
 }
 
-.side-panel {
+/* .side-panel {
     background: #002233;
     color: white;
     position: fixed;
@@ -82,4 +82,4 @@ Table {
   .side-panel.open {
     transform: translateX(0);
     left: 94.5%;
-  }
+  } */

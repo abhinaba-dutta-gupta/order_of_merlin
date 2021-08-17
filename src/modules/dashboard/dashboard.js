@@ -10,6 +10,7 @@ import { Person, Domain, CallSplit, Keyboard, Menu, AccountCircle } from '@mater
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
 import { associate } from '../../api/auth';
 import { addCandidate } from '../../api/candidateAuth';
+import Profile from '../profile/profile';
 
 
 class Dashboard extends Component {
@@ -53,11 +54,6 @@ class Dashboard extends Component {
         this.setState({
             stream: event.target.value
         });
-    }
-
-    redirectToProfile = () => {
-        const { history } = this.props;
-        if (history) history.push('/profile');
     }
 
     redirectToDashboard = () => {
@@ -167,7 +163,6 @@ class Dashboard extends Component {
                     <Tabs style={{ color: '#1f2833' }}
                         aria-label="disabled tabs example">
                         <Tab label="Dashboard" onClick={this.redirectToDashboard} />
-                        <Tab label="Profile" onClick={this.redirectToProfile} />
                     </Tabs>
                 </AppbarLogin>
 
@@ -307,7 +302,7 @@ class Dashboard extends Component {
                 </Modal>
 
                 <div className={panelClasses}>
-                    <h3 onClick={this.redirectToSignin}>Logout</h3>
+                    <Profile></Profile>
                 </div>
 
                 <div className={drawerClasses} >

@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import '../candidate/styles.css';
 import background from '../../images/background.webp';
 import { IconButton, Tabs, Tab } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
+import { AccountCircle, Menu } from '@material-ui/icons';
 import { Rating } from '@material-ui/lab';
 import { TableContainer, Table } from 'react-custom-table';
 import { withRouter } from "react-router-dom";
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
 import { showCandidates } from '../../api/candidateAuth';
+import Profile from '../profile/profile';
 
 class Candidate extends Component {
 
@@ -19,6 +20,18 @@ class Candidate extends Component {
             panelOpen: false,
             associateid: '',
         }
+    }
+
+    openDrawer = () => {
+        this.setState({
+            drawerOpen: !this.state.drawerOpen
+        })
+    }
+
+    closeDrawer = () => {
+        this.setState({
+            drawerOpen: false
+        })
     }
 
     simpleRating = () => {
@@ -33,11 +46,6 @@ class Candidate extends Component {
     redirectToDashboard = () => {
         const { history } = this.props;
         if (history) history.push('/dashboard');
-    }
-
-    redirectToProfile = () => {
-        const { history } = this.props;
-        if (history) history.push('/profile');
     }
 
     openPanel = () => {
@@ -70,6 +78,11 @@ class Candidate extends Component {
 
     render() {
 
+        let drawerClasses = 'side-drawer';
+        if (this.state.drawerOpen) {
+            drawerClasses = 'side-drawer open';
+        }
+
         let panelClasses = 'side-panel';
         if (this.state.panelOpen) {
             panelClasses = 'side-panel open';
@@ -78,13 +91,13 @@ class Candidate extends Component {
         return (
             <div className='container' style={{ backgroundImage: `url(${background})`, backgroundSize: 'contain' }}>
                 <AppbarLogin>
+                    <IconButton onClick={this.openDrawer}><Menu style={{ color: '#1f2833' }} /></IconButton>
                     <IconButton onClick={this.openPanel}><AccountCircle style={{ color: '#1f2833' }} /></IconButton>
                     <Tabs
                         indicatorColor="primary"
                         textColor="white"
                         aria-label="disabled tabs example">
                         <Tab label="Dashboard" onClick={this.redirectToDashboard} />
-                        <Tab label="Profile" onClick={this.redirectToProfile} />
                     </Tabs>
                 </AppbarLogin>
 
@@ -144,11 +157,21 @@ class Candidate extends Component {
                 </div>
 
                 {/*<div><Pagination className='page' count={5} size="large" variant="text" shape="rounded" color="primary" /></div>*/}
-                
+
                 <button className='exit-btn' onClick={this.redirectToSignin}>Exit App</button>
 
                 <div className={panelClasses}>
-                    <h3 onClick={this.redirectToSignin}>Logout</h3>
+                    <Profile></Profile>
+                </div>
+
+                <div className={drawerClasses} >
+                    <h2 onClick={this.showModal}>Create Interview</h2>
+    
+                    <h2 onClick={this.showModal1}>Add a Question</h2>
+    
+                    <h2>About</h2>
+    
+                    <h2 onClick={this.closeDrawer}>Close</h2>
                 </div>
             </div>
         );

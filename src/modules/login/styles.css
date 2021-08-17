@@ -68,7 +68,7 @@ h1,h2,h3{
 
 .logo-login {
     left: calc(25% - 200px);
-    top: calc(25% - 95px);
+    top: calc(25% - 100px);
     width: 50px;
     position: absolute;
 }
@@ -87,6 +87,6 @@ h1,h2,h3{
     border-right: 40px solid transparent;
     border-bottom: 40px solid #80cbce;
     transform: rotate(225deg);
-    margin-top: 95px;
+    margin-top: 90px;
     margin-left: -21px;
 }

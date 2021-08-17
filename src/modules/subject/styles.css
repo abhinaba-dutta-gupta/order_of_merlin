@@ -81,7 +81,7 @@ button:hover {
     background-color: #8200E6;
 }
 
-.side-panel {
+/* .side-panel {
     background: #002233;
     color: white;
     position: fixed;
@@ -94,7 +94,7 @@ button:hover {
   .side-panel.open {
     transform: translateX(0);
     left: 94.5%;
-  }
+  } */
 
   .article-container {
     display: flex;
