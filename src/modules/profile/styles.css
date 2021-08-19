@@ -58,7 +58,7 @@ Table {
     border-collapse: collapse;
 } */
 
-button {
+/* button {
     background-color: #540094;
     color: white;
     padding: 8px;
@@ -70,7 +70,7 @@ button {
 
 button:hover {
     background-color: #8200E6;
-}
+} */
 
 .side-panel {
     background: #002233;

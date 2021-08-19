@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../dashboard/styles.css';
-import background from '../../images/background.jpg';
+import background from '../../images/background.webp';
 import arrow from '../../images/right-arrow.png';
 import { IconButton, Typography, Grid, Paper, TextField, TextareaAutosize, FormControl, InputLabel, Select, MenuItem, Tab, Tabs } from '@material-ui/core';
 import { Rating } from '@material-ui/lab';
@@ -156,7 +156,7 @@ class Dashboard extends Component {
         }
 
         return (
-            <div className='container' style={{ backgroundImage: `url(${background})` }}>
+            <div className='container' style={{ backgroundImage: `url(${background})`, backgroundSize: 'contain' }}>
                 <AppbarLogin>
                     <IconButton onClick={this.openDrawer}><Menu style={{ color: '#1f2833' }} /></IconButton>
                     <IconButton onClick={this.openPanel}><AccountCircle style={{ color: '#1f2833' }} /></IconButton>
@@ -169,7 +169,7 @@ class Dashboard extends Component {
                 <h1 className='title'>Welcome, {this.state.name}</h1>
 
                 <Grid container className='grid' spacing={1} justify='center' alignItems='center'>
-                    <Grid item sm={4}><Paper style={{ padding: '20px', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>No of interviews
+                    <Grid item sm={4}><Paper style={{ padding: '20px', backgroundColor: '#80cbce', cursor: 'pointer', color: '#1f2833' }}>No of interviews
                         <Typography variant='h1'>{this.calcInterview}97</Typography></Paper></Grid>
                 </Grid>
 
@@ -177,7 +177,7 @@ class Dashboard extends Component {
 
                 <Grid container className='grid' spacing={7} justify='center' alignItems='center'>
                     <Grid item sm={3}>
-                        <Paper style={{ padding: '20px', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>Washington Shundar
+                        <Paper style={{ padding: '20px', backgroundColor: '#80cbce', cursor: 'pointer', color: '#1f2833' }}>Washington Shundar
                             <Typography component="legend">Selected</Typography>
                             <Rating
                                 name="candidate1"
@@ -189,7 +189,7 @@ class Dashboard extends Component {
                         </Paper>
                     </Grid>
                     <Grid item sm={3}>
-                        <Paper style={{ padding: '20px', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>K.L. Rahul
+                        <Paper style={{ padding: '20px', backgroundColor: '#80cbce', cursor: 'pointer', color: '#1f2833' }}>K.L. Rahul
                             <Typography component="legend">Selected</Typography>
                             <Rating
                                 name="candidate2"
@@ -201,7 +201,7 @@ class Dashboard extends Component {
                         </Paper>
                     </Grid>
                     <Grid item sm={3}>
-                        <Paper style={{ padding: '20px', backgroundColor: '#002233', cursor: 'pointer', color: 'white' }}>M.S. Dhoni
+                        <Paper style={{ padding: '20px', backgroundColor: '#80cbce', cursor: 'pointer', color: '#1f2833' }}>M.S. Dhoni
                             <Typography component="legend">Selected</Typography>
                             <Rating
                                 name="candidate3"

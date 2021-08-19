@@ -67,7 +67,7 @@ p {
     align-items: center;
 }
 
-.button-question {
+/* .button-question {
     background-color: #45a29e;
     color: white;
     padding: 8px;
@@ -80,7 +80,7 @@ p {
 
 .button-question:hover {
     background-color: #66fcf1;
-}
+} */
 
 hr {
     background-color: #008099;

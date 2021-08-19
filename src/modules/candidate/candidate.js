@@ -3,12 +3,13 @@ import '../candidate/styles.css';
 import background from '../../images/background.webp';
 import { IconButton, Tabs, Tab } from '@material-ui/core';
 import { AccountCircle, Menu } from '@material-ui/icons';
-import { Rating } from '@material-ui/lab';
-import { TableContainer, Table } from 'react-custom-table';
+// import { Rating } from '@material-ui/lab';
+// import { TableContainer, Table } from 'react-custom-table';
 import { withRouter } from "react-router-dom";
 import AppbarLogin from '../../components/appbarLogin/appbarLogin';
 import { showCandidates } from '../../api/candidateAuth';
 import Profile from '../profile/profile';
+import TableRows from '../../components/TableRows/TableRows';
 
 class Candidate extends Component {
 
@@ -101,9 +102,23 @@ class Candidate extends Component {
                     </Tabs>
                 </AppbarLogin>
 
-                <h1 className='title'>Candidate Statistics</h1>
+                <div style={{ display: 'grid', justifyItems: 'center' }}>
+                    <div id="outer_space">
+                        <div id="pencil">
+                            <h1 className='title'>Candidate Statistics</h1>
+                            <div id="top"></div>
+                            <div id="top_border"></div>
+                        </div>
+                        <div id="bottom">
+                            <div id="nib"></div>
+                        </div>
+                    </div>
+                    <div className='pen'>
+                        <h1 className='title'>Candidate Statistics</h1>
+                    </div>
+                </div>
 
-                <div className='table-div'>
+                {/*<div className='table-div'>
                     <div style={{ width: '850px', height: '350px' }}>
                         <TableContainer
                             columns={[
@@ -132,28 +147,16 @@ class Candidate extends Component {
                                             this.simpleRating(newValue);
                                         }} />, remarks: "Average", status: "Not-Selected", date: "29/1/21"
                                 },
-                                {
-                                    id: "3", name: "James McAvoy", points: <Rating
-                                        name="candidate3"
-                                        value={this.value}
-                                        precision={0.5}
-                                        onChange={(event, newValue) => {
-                                            this.simpleRating(newValue);
-                                        }} />, remarks: "Very bad", status: "Not-Selected", date: "24/1/21"
-                                },
-                                {
-                                    id: "4", name: "Tim Paine", points: <Rating
-                                        name="candidate4"
-                                        value={this.value}
-                                        precision={0.5}
-                                        onChange={(event, newValue) => {
-                                            this.simpleRating(newValue);
-                                        }} />, remarks: "Excellent", status: "Selected", date: "25/1/21"
-                                }
                             ]} >
                             <Table className='table' />
                         </TableContainer>
                     </div>
+                </div>*/}
+
+                <div style={{ display: 'grid', justifyItems: 'center' }}>
+                    <TableRows></TableRows>
+                    <TableRows></TableRows>
+                    <TableRows></TableRows>
                 </div>
 
                 {/*<div><Pagination className='page' count={5} size="large" variant="text" shape="rounded" color="primary" /></div>*/}
@@ -166,11 +169,11 @@ class Candidate extends Component {
 
                 <div className={drawerClasses} >
                     <h2 onClick={this.showModal}>Create Interview</h2>
-    
+
                     <h2 onClick={this.showModal1}>Add a Question</h2>
-    
+
                     <h2>About</h2>
-    
+
                     <h2 onClick={this.closeDrawer}>Close</h2>
                 </div>
             </div>

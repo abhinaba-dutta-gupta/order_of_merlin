@@ -40,17 +40,17 @@ body {
 }
 
 button {
-    background-color: #540094;
+    background-color: #45a29e;
     color: white;
     padding: 8px;
     border-radius: 10px;
-    border-color: #8200E6;
+    border-color: #66fcf1;
     font-variant: small-caps;
     font-size: 16px;
 }
 
 button:hover {
-    background-color: #8200E6;
+    background-color: #66fcf1;
 }
 
 .side-drawer { 
